@@ -1,17 +1,11 @@
 <main class="main">
-  <div class="content">
-    <div class="left-side">
-      <h1>Concy the app is working! I can work from anywhere :D</h1>
-      <p>Let's fly to the mooooon</p>
-      <div class="pill-group">
-        <span class="pill">Home</span>
-        <span class="pill">About</span>
-        <span class="pill">Contact</span>
-      </div>
-    </div>
-    <div class="divider"></div>
-    <div class="right-side">
-      <p style="font-size: 2rem; text-align: center;">🚀</p>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
+  <!-- Footer for mobile -->
+  <footer class="footer">
+    <nav class="footer-nav">
+      <a href="#" class="footer-link">Home</a>
+      <a href="#" class="footer-link">About</a>
+      <a href="#" class="footer-link">Contact</a>
+    </nav>
+  </footer>
 </main>
