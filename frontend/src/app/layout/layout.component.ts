@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -8,4 +8,24 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
 })
-export class LayoutComponent {}
+export class LayoutComponent implements AfterViewInit {
+  @ViewChild('contentArea') contentArea!: ElementRef<HTMLElement>;
+
+  isScrolled = false;
+  isHome = false;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isHome = this.router.url === '/' || this.router.url === '/home';
+      }
+    });
+  }
+
+  ngAfterViewInit(): void {
+  this.contentArea.nativeElement.addEventListener('scroll', () => {
+    this.isScrolled = this.contentArea.nativeElement.scrollTop > 80;
+    console.log('ScrollTop:', this.contentArea.nativeElement.scrollTop, 'isScrolled:', this.isScrolled);
+  });
+}
+}
