@@ -1,0 +1,106 @@
+@import url('https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css');
+
+/* Parent container */
+.pdf-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 450px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  padding: 0 20px;
+
+  /* Make this fill available height */
+  height: 100%;   
+  box-sizing: border-box;
+
+  /* Optional: if .pdf-preview is inside a flex container,
+     allow it to grow */
+  flex-grow: 1;
+}
+
+/* The pdf-viewer wrapper */
+.pdf-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  /* Add rounded corners */
+  border-radius: 12px;
+
+  /* Add subtle shadow for elevation */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+
+  /* Make sure content inside respects rounding */
+  overflow: hidden;
+
+  /* Optional: background to better show the rounded edges */
+  background: #fff;
+}
+
+
+/* Add spacing between PDF viewer and button */
+.download-btn {
+  display: flex;
+  margin-top: 20px; /* spacing */
+  padding: 12px 28px;
+  background: #f5f5f7; /* very light gray, Apple-style */
+  color: #1d1d1f; /* dark gray text */
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hover effect: subtle darkening and stronger shadow */
+.download-btn:hover {
+  background: #e1e1e6;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  color: #000; /* slightly darker text */
+}
+
+/* Splash animation effect */
+.download-btn::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: rgba(29, 29, 31, 0.1); /* subtle dark splash */
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+/* Animate the splash on active/click */
+.download-btn:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  transition: transform 0s, opacity 0.4s ease-out;
+}
+
+/* Keep text above splash */
+.download-btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.download-btn i {
+  font-size: 1rem; /* same size as the surrounding text */
+  margin-left: 8px;
+  vertical-align: middle;
+}

@@ -26,15 +26,15 @@
       </span>
       <span class="label">Me</span>
     </button>
-    <button class="nav-item" [class.active]="isActive('/email')" (click)="navigate('/email')">
-      <span class="nav-icon">
-        <i [ngClass]= "isActive('/email') ? 'fi fi-sr-computer' : 'fi fi-rr-computer'" ></i>
-      </span>
-      <span class="label">Work</span>
-    </button>
     <button class="nav-item" [class.active]="isActive('/work')" (click)="navigate('/work')">
       <span class="nav-icon">
         <i [ngClass]= "isActive('/works') ? 'fi fi-sr-envelope' : 'fi fi-rr-envelope'" ></i>
+      </span>
+      <span class="label">Work</span>
+    </button>
+    <button class="nav-item" [class.active]="isActive('/email')" (click)="navigate('/email')">
+      <span class="nav-icon">
+        <i [ngClass]= "isActive('/email') ? 'fi fi-sr-computer' : 'fi fi-rr-computer'" ></i>
       </span>
       <span class="label">Email</span>
     </button>
