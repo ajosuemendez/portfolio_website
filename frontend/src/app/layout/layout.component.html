@@ -17,7 +17,30 @@
     <router-outlet></router-outlet>
   </main>
 
+  <nav class="bottom-nav">
+    <button class="nav-item" [class.active]="isActive('/')" (click)="navigate('/')">
+      <span class="icon">🏠</span>
+      <span class="label">Home</span>
+    </button>
+    <button class="nav-item" [class.active]="isActive('/about')" (click)="navigate('/me')">
+      <span class="icon">🔍</span>
+      <span class="label">Me</span>
+    </button>
+    <button class="nav-item" [class.active]="isActive('/message')" (click)="navigate('/message')">
+      <span class="icon">➕</span>
+      <span class="label">Message</span>
+    </button>
+    <button class="nav-item" [class.active]="isActive('/projects')" (click)="navigate('/projects')">
+      <span class="icon">🔔</span>
+      <span class="label">Projects</span>
+    </button>
+    <button class="nav-item" [class.active]="isActive('/cv')" (click)="navigate('/cv')">
+      <span class="icon">👤</span>
+      <span class="label">CV</span>
+    </button>
+</nav>
+
   <footer class="app-footer">
-    <p>&copy; 2025 Ajosue Mendez</p>
+    <p>&copy; 2025 Ajosuemendez</p>
   </footer>
 </div>
