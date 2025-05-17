@@ -4,12 +4,8 @@
       <div class="profile-icon" aria-label="Profile"></div>
       <span class="brand">
         Ajosuemendez
-        <span class="arrow" aria-hidden="true" style="display:inline-block; width:16px; height:16px; vertical-align:middle; margin-left:4px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:100%; height:100%;">
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </span>
       </span>
+      <i class="fi fi-bs-angle-small-down center-arrow-down"></i>
     </div>
   </header>
 
@@ -19,23 +15,33 @@
 
   <nav class="bottom-nav">
     <button class="nav-item" [class.active]="isActive('/')" (click)="navigate('/')">
-      <span class="icon">🏠</span>
+      <span class="nav-icon">
+        <i [ngClass]= "isActive('/') ? 'fi fi-sr-home' : 'fi fi-rr-home'" ></i>
+      </span>
       <span class="label">Home</span>
     </button>
-    <button class="nav-item" [class.active]="isActive('/about')" (click)="navigate('/me')">
-      <span class="icon">🔍</span>
+    <button class="nav-item" [class.active]="isActive('/me')" (click)="navigate('/me')">
+      <span class="nav-icon">
+        <i [ngClass]= "isActive('/me') ? 'fi fi-sr-user' : 'fi fi-rr-user'" ></i>
+      </span>
       <span class="label">Me</span>
     </button>
-    <button class="nav-item" [class.active]="isActive('/message')" (click)="navigate('/message')">
-      <span class="icon">➕</span>
-      <span class="label">Message</span>
+    <button class="nav-item" [class.active]="isActive('/email')" (click)="navigate('/email')">
+      <span class="nav-icon">
+        <i [ngClass]= "isActive('/email') ? 'fi fi-sr-computer' : 'fi fi-rr-computer'" ></i>
+      </span>
+      <span class="label">Work</span>
     </button>
-    <button class="nav-item" [class.active]="isActive('/projects')" (click)="navigate('/projects')">
-      <span class="icon">🔔</span>
-      <span class="label">Projects</span>
+    <button class="nav-item" [class.active]="isActive('/works')" (click)="navigate('/works')">
+      <span class="nav-icon">
+        <i [ngClass]= "isActive('/works') ? 'fi fi-sr-envelope' : 'fi fi-rr-envelope'" ></i>
+      </span>
+      <span class="label">Email</span>
     </button>
     <button class="nav-item" [class.active]="isActive('/cv')" (click)="navigate('/cv')">
-      <span class="icon">👤</span>
+      <span class="nav-icon">
+        <i [ngClass]= "isActive('/cv') ? 'fi fi-sr-file' : 'fi fi-rr-file'" ></i>
+      </span>
       <span class="label">CV</span>
     </button>
 </nav>
