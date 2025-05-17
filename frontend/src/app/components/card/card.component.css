@@ -160,6 +160,10 @@
   .overlay {
     display: none;
   }
+  .image-link:hover .project-image {
+    transform: none !important;
+    filter: none !important;
+  }
 }
 
 @media (hover: none) {
