@@ -108,7 +108,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 8px 16px; /* Matches 48x48 min touch area */
+  padding: 0.25rem; /* Matches 48x48 min touch area */
   border: none;
   background: none;
   cursor: pointer;
@@ -121,7 +121,6 @@
 .nav-icon {
   font-size: 1.25rem; /* Optimal icon size */
   line-height: 1;
-  margin-bottom: 0.25rem;
 }
 
 .nav-item.active {
