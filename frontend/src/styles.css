@@ -22,3 +22,7 @@ app-root {
   flex-direction: column;
   min-height: 0;         /* prevents scroll issues */
 }
+
+.nav-item {
+  -webkit-tap-highlight-color: transparent;
+}
