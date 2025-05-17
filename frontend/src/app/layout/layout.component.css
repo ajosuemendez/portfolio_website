@@ -98,6 +98,7 @@
   z-index: 101;
   border-top: 1px solid #e0e0e0;
   border-radius: 20px; /* pill shape */
+  padding-top: 0.25rem;
 }
 
 .nav-item {
@@ -114,14 +115,11 @@
   color: #666;
   font-size: 0.75rem;
   transition: color 0.2s ease;
-}
-
-.icon-max-height-width {
-  max-height: 1rem;
+  padding-top: 0.75rem;
 }
 
 .nav-icon {
-  font-size: 1rem; /* Optimal icon size */
+  font-size: 1.25rem; /* Optimal icon size */
   line-height: 1;
   margin-bottom: 0.25rem;
 }
@@ -146,6 +144,7 @@
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
+  margin: 0;
 }
 
 .nav-item.active {
