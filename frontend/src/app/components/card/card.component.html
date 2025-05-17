@@ -1,0 +1,11 @@
+<div class="project-card" (click)="toggleDetails()">
+  <h3 class="project-title">{{ project.title }}</h3>
+
+  <div class="tech-list">
+    <span *ngFor="let tech of project.tech" class="tech-chip">{{ tech }}</span>
+  </div>
+
+  <div class="project-details" [class.expanded]="project.expanded">
+    <p>{{ project.description }}</p>
+  </div>
+</div>

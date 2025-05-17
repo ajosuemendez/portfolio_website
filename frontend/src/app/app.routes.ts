@@ -22,9 +22,9 @@ export const appRoutes: Route[] = [
           import('./sites/contact/contact.component').then((m) => m.ContactComponent),
       },
       {
-        path: 'works',
+        path: 'work',
         loadComponent: () =>
-          import('./sites/projects/projects.component').then((m) => m.ProjectsComponent),
+          import('./sites/work/work.component').then((m) => m.WorkComponent),
       },
       {
         path: 'cv',

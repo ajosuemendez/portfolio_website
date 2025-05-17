@@ -1,0 +1,49 @@
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.project-card {
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  background-color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.project-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.tech-list {
+  margin-bottom: 1rem;
+}
+
+.tech-chip {
+  background-color: #e0f7fa;
+  border-radius: 9999px;
+  padding: 0.2rem 0.6rem;
+  margin: 0 0.3rem 0.3rem 0;
+  font-size: 0.75rem; /* Smaller font */
+  font-weight: 500;   /* Optional: Slightly bolder for readability */
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.project-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.project-details.expanded {
+  margin-top: 1rem;
+  max-height: 200px; /* Adjust as needed */
+}
