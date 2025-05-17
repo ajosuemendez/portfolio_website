@@ -23,6 +23,6 @@ app-root {
   min-height: 0;         /* prevents scroll issues */
 }
 
-.nav-item {
+.nav-item, .project-card {
   -webkit-tap-highlight-color: transparent;
 }

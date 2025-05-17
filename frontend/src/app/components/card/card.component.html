@@ -1,4 +1,4 @@
-<div class="project-card" (click)="toggleDetails()">
+<div #cardRef class="project-card" (click)="toggleDetails()">
   <div class="card-header">
     <h3 class="project-title">{{ project.title }}</h3>
   </div>
@@ -7,8 +7,29 @@
     <span *ngFor="let tech of project.tech" class="tech-chip">{{ tech }}</span>
   </div>
 
+  <div class="project-image-wrapper">
+    <ng-container *ngIf="!isMobile; else noLink">
+      <a
+        [href]="project.link"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="image-link"
+      >
+        <img class="project-image" src="assets/images/portfolio.png" alt="{{ project.title }}" />
+      </a>
+    </ng-container>
+    <ng-template #noLink>
+      <div class="image-link">
+        <img class="project-image" src="assets/images/portfolio.png" alt="{{ project.title }}" />
+      </div>
+    </ng-template>
+  </div>
+
   <div class="project-details" [class.expanded]="project.expanded">
     <p>{{ project.description }}</p>
+      <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="visit-button">
+        Visit Site
+      </a>
   </div>
 
   <div class="expand-icon" [class.expanded]="project.expanded">
