@@ -12,19 +12,24 @@ export const appRoutes: Route[] = [
           import('./sites/home/home.component').then((m) => m.HomeComponent),
       },
       {
-        path: 'about',
+        path: 'me',
         loadComponent: () =>
           import('./sites/about/about.component').then((m) => m.AboutComponent),
       },
       {
-        path: 'contact',
+        path: 'email',
         loadComponent: () =>
           import('./sites/contact/contact.component').then((m) => m.ContactComponent),
       },
       {
-        path: 'projects',
+        path: 'works',
         loadComponent: () =>
           import('./sites/projects/projects.component').then((m) => m.ProjectsComponent),
+      },
+      {
+        path: 'cv',
+        loadComponent: () =>
+          import('./sites/cv/cv.component').then((m) => m.CvComponent),
       },
     ],
   },
