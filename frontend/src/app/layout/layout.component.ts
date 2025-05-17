@@ -40,7 +40,6 @@ export class LayoutComponent implements AfterViewInit {
   ngAfterViewInit(): void {
   this.contentArea.nativeElement.addEventListener('scroll', () => {
     this.isScrolled = this.contentArea.nativeElement.scrollTop > 440;
-    console.log('ScrollTop:', this.contentArea.nativeElement.scrollTop, 'isScrolled:', this.isScrolled);
   });
 }
   navigate(path: string): void {
