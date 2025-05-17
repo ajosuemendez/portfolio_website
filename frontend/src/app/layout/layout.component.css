@@ -86,7 +86,6 @@
 
 .bottom-nav {
   position: sticky;
-  bottom: 48px; /* Above footer */
   left: 0;
   width: 100%;
   height: 64px; /* Within 56–72px range */
@@ -99,6 +98,7 @@
   border-top: 1px solid #e0e0e0;
   border-radius: 20px; /* pill shape */
   padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .nav-item {
@@ -164,15 +164,15 @@
     transform: translateY(0) rotate(0deg);
   }
   25% {
-    transform: translateY(-0.75rem) rotate(0deg);
+    transform: translateY(-1rem) rotate(0deg);
   }
   50% {
-    transform: translateY(-0.75rem) rotate(-10deg);
+    transform: translateY(-1rem) rotate(-10deg);
   }
   75% {
-    transform: translateY(-0.75rem) rotate(10deg);
+    transform: translateY(-1rem) rotate(10deg);
   }
   100% {
-    transform: translateY(-0.75rem) rotate(0deg);
+    transform: translateY(-1rem) rotate(0deg);
   }
 }
