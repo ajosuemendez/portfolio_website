@@ -5,7 +5,12 @@
       <span class="brand">
         Ajosuemendez
       </span>
-      <i class="fi fi-bs-angle-small-down center-arrow-down"></i>
+      <div class="language-switch-single" (click)="toggleLanguage()" aria-label="Toggle language">
+      <img
+        [src]="selectedLang === 'en' ? 'assets/images/english-flag.png' : 'assets/images/german-flag.png'"
+        [alt]="selectedLang === 'en' ? 'English' : 'Deutsch'"
+      />
+    </div>
     </div>
   </header>
 

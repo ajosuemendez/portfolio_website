@@ -158,6 +158,31 @@
 }
 
 
+.language-switch-single {
+  width: 40px;
+  height: 32px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.language-switch-single img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  transition: transform 0.3s ease;
+}
+
+.language-switch-single:active img {
+  transform: scale(0.9);
+}
+
 @keyframes float-in {
   0% {
     transform: translateY(0) rotate(0deg);

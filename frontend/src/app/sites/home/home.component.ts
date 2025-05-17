@@ -1,7 +1,9 @@
 // product-list.component.ts
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProjectsComponent } from '../../components/projects/projects.component';
+import { LanguageService } from '../../services/language.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'home',
@@ -10,11 +12,25 @@ import { ProjectsComponent } from '../../components/projects/projects.component'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
   selectedLang: 'en' | 'de' = 'en';
+  private langSub!: Subscription;
+
+  constructor(private languageService: LanguageService) {}
+
+  ngOnInit() {
+    this.langSub = this.languageService.language$.subscribe(lang => {
+      this.selectedLang = lang;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.langSub) {
+      this.langSub.unsubscribe();
+    }
+  }
 
   toggleLanguage() {
-    this.selectedLang = this.selectedLang === 'en' ? 'de' : 'en';
-    // You can add logic here to update translations or store preference
+    this.languageService.toggleLanguage();
   }
 }
