@@ -1,9 +1,7 @@
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
+@import url('https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
 
 .project-card {
+  position: relative; /* Required for absolute positioning */
   border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 1.5rem;
@@ -15,6 +13,8 @@
 .project-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  background-color: #f9f9f9;
+  border-color: #007acc25;
 }
 
 .project-title {
@@ -46,4 +46,35 @@
 .project-details.expanded {
   margin-top: 1rem;
   max-height: 200px; /* Adjust as needed */
+}
+
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.expand-icon {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: #888;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+.expand-icon.expanded {
+  transform: rotate(180deg);
+  color: #007acc;
+}
+
+@media (hover: none) {
+  .project-card:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-color: transparent;
+  }
 }

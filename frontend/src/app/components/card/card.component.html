@@ -1,5 +1,7 @@
 <div class="project-card" (click)="toggleDetails()">
-  <h3 class="project-title">{{ project.title }}</h3>
+  <div class="card-header">
+    <h3 class="project-title">{{ project.title }}</h3>
+  </div>
 
   <div class="tech-list">
     <span *ngFor="let tech of project.tech" class="tech-chip">{{ tech }}</span>
@@ -7,5 +9,9 @@
 
   <div class="project-details" [class.expanded]="project.expanded">
     <p>{{ project.description }}</p>
+  </div>
+
+  <div class="expand-icon" [class.expanded]="project.expanded">
+    <i class="fi fi-rr-angle-small-down"></i>
   </div>
 </div>
