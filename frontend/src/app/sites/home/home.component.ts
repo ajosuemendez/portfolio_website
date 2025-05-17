@@ -10,4 +10,11 @@ import { ProjectsComponent } from '../../components/projects/projects.component'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {}
+export class HomeComponent {
+  selectedLang: 'en' | 'de' = 'en';
+
+  toggleLanguage() {
+    this.selectedLang = this.selectedLang === 'en' ? 'de' : 'en';
+    // You can add logic here to update translations or store preference
+  }
+}
