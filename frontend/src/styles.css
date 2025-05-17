@@ -1,5 +1,9 @@
 @import "@fontsource/manrope"; /* Defaults to weight 400 */
 
+:root {
+  --vh: 100%;
+}
+
 html, body {
   height: 100%;
   margin: 0;

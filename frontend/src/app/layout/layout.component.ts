@@ -23,6 +23,20 @@ export class LayoutComponent implements AfterViewInit {
     });
   }
 
+  ngOnInit() {
+    this.setViewportHeight();
+    window.addEventListener('resize', this.setViewportHeight);
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.setViewportHeight);
+  }
+
+  setViewportHeight = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
   ngAfterViewInit(): void {
   this.contentArea.nativeElement.addEventListener('scroll', () => {
     this.isScrolled = this.contentArea.nativeElement.scrollTop > 440;
