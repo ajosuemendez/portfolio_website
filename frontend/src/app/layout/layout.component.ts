@@ -50,6 +50,8 @@ export class LayoutComponent implements AfterViewInit, OnInit, OnDestroy {
     this.setViewportHeight();
     window.addEventListener('resize', this.setViewportHeight);
 
+    this.pressedButton = this.router.url;
+
     this.languageSubscription = this.languageService.language$.subscribe((lang) => {
       this.selectedLang = lang;
     });
