@@ -16,7 +16,11 @@
 
   <main #contentArea class="app-content">
     <div class="loading-overlay" *ngIf="debouncedIsLoading">
-      <div class="spinner"></div>
+      <div class="code-loader">
+        <span class="code-symbol">&lt;&gt;</span>
+        <span class="typing-text">Code in progress…</span>
+        <span class="code-symbol">&lt;/&gt;</span>
+      </div>
     </div>
     <router-outlet></router-outlet>
   </main>
