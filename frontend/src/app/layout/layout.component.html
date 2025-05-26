@@ -14,96 +14,70 @@
     </div>
   </header>
 
-  <div class="loading-overlay" *ngIf="debouncedIsLoading">
-    <div class="spinner"></div>
-  </div>
-
   <main #contentArea class="app-content">
+    <div class="loading-overlay" *ngIf="debouncedIsLoading">
+      <div class="spinner"></div>
+    </div>
     <router-outlet></router-outlet>
   </main>
 
   <nav class="bottom-nav">
     <button
       class="nav-item"
-      [class.active]="currentRoute === '/'"
       [class.pressed]="pressedButton === '/'"
-      (mousedown)="handlePress('/')"
-      (mouseup)="handleRelease()"
-      (mouseleave)="handleRelease()"
       (touchstart)="handlePress('/')"
-      (touchend)="handleRelease()"
       (click)="navigate('/')"
     >
       <span class="nav-icon">
-        <i [ngClass]="currentRoute === '/' ? 'fi fi-sr-home' : 'fi fi-rr-home'"></i>
+        <i [ngClass]="pressedButton === '/' ? 'fi fi-sr-home' : 'fi fi-rr-home'"></i>
       </span>
       <span class="label">Home</span>
     </button>
 
     <button
       class="nav-item"
-      [class.active]="currentRoute === '/me'"
       [class.pressed]="pressedButton === '/me'"
-      (mousedown)="handlePress('/me')"
-      (mouseup)="handleRelease()"
-      (mouseleave)="handleRelease()"
       (touchstart)="handlePress('/me')"
-      (touchend)="handleRelease()"
       (click)="navigate('/me')"
     >
       <span class="nav-icon">
-        <i [ngClass]="currentRoute === '/me' ? 'fi fi-sr-user' : 'fi fi-rr-user'"></i>
+        <i [ngClass]="pressedButton === '/me' ? 'fi fi-sr-user' : 'fi fi-rr-user'"></i>
       </span>
       <span class="label">Me</span>
     </button>
 
     <button
       class="nav-item"
-      [class.active]="currentRoute === '/work'"
       [class.pressed]="pressedButton === '/work'"
-      (mousedown)="handlePress('/work')"
-      (mouseup)="handleRelease()"
-      (mouseleave)="handleRelease()"
       (touchstart)="handlePress('/work')"
-      (touchend)="handleRelease()"
       (click)="navigate('/work')"
     >
       <span class="nav-icon">
-        <i [ngClass]="currentRoute === '/work' ? 'fi fi-sr-computer' : 'fi fi-rr-computer'"></i>
+        <i [ngClass]="pressedButton === '/work' ? 'fi fi-sr-computer' : 'fi fi-rr-computer'"></i>
       </span>
       <span class="label">Work</span>
     </button>
 
     <button
       class="nav-item"
-      [class.active]="currentRoute === '/email'"
       [class.pressed]="pressedButton === '/email'"
-      (mousedown)="handlePress('/email')"
-      (mouseup)="handleRelease()"
-      (mouseleave)="handleRelease()"
       (touchstart)="handlePress('/email')"
-      (touchend)="handleRelease()"
       (click)="navigate('/email')"
     >
       <span class="nav-icon">
-        <i [ngClass]="currentRoute === '/email' ? 'fi fi-sr-envelope' : 'fi fi-rr-envelope'"></i>
+        <i [ngClass]="pressedButton === '/email' ? 'fi fi-sr-envelope' : 'fi fi-rr-envelope'"></i>
       </span>
       <span class="label">Email</span>
     </button>
 
     <button
       class="nav-item"
-      [class.active]="currentRoute === '/cv'"
       [class.pressed]="pressedButton === '/cv'"
-      (mousedown)="handlePress('/cv')"
-      (mouseup)="handleRelease()"
-      (mouseleave)="handleRelease()"
       (touchstart)="handlePress('/cv')"
-      (touchend)="handleRelease()"
       (click)="navigate('/cv')"
     >
       <span class="nav-icon">
-        <i [ngClass]="currentRoute === '/cv' ? 'fi fi-sr-file' : 'fi fi-rr-file'"></i>
+        <i [ngClass]="pressedButton === '/cv' ? 'fi fi-sr-file' : 'fi fi-rr-file'"></i>
       </span>
       <span class="label">CV</span>
     </button>
