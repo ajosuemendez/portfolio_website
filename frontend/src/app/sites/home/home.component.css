@@ -1,3 +1,9 @@
+.profile-title {
+  margin: 0;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
 .profile-container {
   display: flex;
   flex-direction: column;
@@ -5,7 +11,7 @@
   max-width: 450px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #222;
-  padding: 0 20px;
+  padding: 1.5rem 1.5rem;
   gap: 0.5rem;
 }
 
@@ -68,6 +74,7 @@
   height: 44px; /* fixed height for uniformity */
 }
 
+
 .language-switch .highlight {
   position: absolute;
   top: 0;
@@ -103,4 +110,10 @@
   width: 20px; /* slightly smaller for breathing room */
   height: 20px;
   display: block;
+}
+
+.top-overlay {
+  width: 100%;
+  background-color: #f0f0f0; /* or your desired color */
+  z-index: -1; /* or adjust as needed to stay behind other elements */
 }
