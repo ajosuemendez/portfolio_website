@@ -7,6 +7,8 @@ WORKDIR /app
 # Copy package.json and package-lock.json to leverage Docker cache for npm install
 COPY package*.json ./
 
+RUN npm install -g @angular/cli
+
 # Install dependencies (this will create a node_modules directory in the container)
 RUN npm install
 
