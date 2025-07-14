@@ -61,7 +61,7 @@
           "options": {
           "host": "0.0.0.0",
           "disableHostCheck": true,
-          "allowedHosts": ["localhost","app.ajosuemendez.com"]
+          "allowedHosts": ["localhost","info.ajosuemendez.com"]
         },
           "configurations": {
             "production": {
