@@ -14,20 +14,21 @@
         target="_blank"
         rel="noopener noreferrer"
         class="image-link"
+        (click)="$event.stopPropagation()"
       >
-        <img class="project-image" src="assets/images/portfolio.png" alt="{{ project.title }}" />
+        <img class="project-image" src="{{ project.imagePath }}" alt="{{ project.title }}" />
       </a>
     </ng-container>
     <ng-template #noLink>
       <div class="image-link">
-        <img class="project-image" src="assets/images/portfolio.png" alt="{{ project.title }}" />
+        <img class="project-image" src="{{ project.imagePath }}" alt="{{ project.title }}" />
       </div>
     </ng-template>
   </div>
 
   <div class="project-details" [class.expanded]="project.expanded">
     <p>{{ project.description }}</p>
-      <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="visit-button">
+      <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="visit-button" (click)="$event.stopPropagation()">
         Visit Site
       </a>
   </div>

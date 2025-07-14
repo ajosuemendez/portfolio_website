@@ -16,31 +16,23 @@ export class ProjectsComponent {
       title: 'Portfolio Website',
       tech: ['Angular', 'TypeScript', 'Nginx', 'Docker'],
       description: 'A personal portfolio showcasing my work and resume.',
-      expanded: false
-    },
-    {
-      title: 'Online Chatbot Escape Room',
-      tech: ['React', 'Python', 'Rasa', 'Docker'],
-      description: 'An online chatbot for playing escape rooms.',
-      expanded: false
-    },
-    {
-      title: 'Feelinguo',
-      tech: ['Angular', 'TypeScript', 'Node.js'],
-      description: 'A platform for learning languages in a fun and easy way.',
-      expanded: false
+      expanded: false,
+      imagePath: 'assets/images/portfolio.png'
     },
     {
       title: 'Decision Support App - Slack',
       tech: ['React', 'Python', 'MySQL'],
       description: 'App that helps groups to make important decision while traveling on the phone/tablet.',
-      expanded: false
+      expanded: false,
+      link: 'https://info.ajosuemendez.com/decision-support/',
+      imagePath: 'assets/images/dsp-frontpage.png'
     },
     {
-      title: '3 Player Chess App',
-      tech: ['React', 'Java'],
-      description: 'App for scanning rooms and generate 3d models.',
-      expanded: false
-    },
+      title: 'Online Chatbot Escape Room',
+      tech: ['React', 'Python', 'Rasa', 'Docker'],
+      description: 'An online chatbot for playing escape rooms.',
+      expanded: false,
+      imagePath: 'assets/images/portfolio.png'
+    }
   ];
 }
