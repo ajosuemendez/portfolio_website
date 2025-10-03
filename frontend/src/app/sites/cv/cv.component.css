@@ -7,8 +7,8 @@
   align-items: center;
   max-width: 450px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #222;
-  padding: 0 20px;
+  color: var(--color-accent);
+  padding: 1rem;
 
   /* Make this fill available height */
   height: 100%;   
@@ -37,6 +37,7 @@
 
   /* Optional: background to better show the rounded edges */
   background: #fff;
+  
 }
 
 
@@ -45,13 +46,13 @@
   display: flex;
   margin-top: 20px; /* spacing */
   padding: 12px 28px;
-  background: #f5f5f7; /* very light gray, Apple-style */
-  color: #1d1d1f; /* dark gray text */
+  background: var(--color-bg); /* very light gray, Apple-style */
+  color: var(--color-primary);
   font-weight: 600;
   font-size: 1rem;
   border-radius: 30px;
   text-decoration: none;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px var(--color-light-shadow);
   position: relative;
   overflow: hidden;
   transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
@@ -64,9 +65,9 @@
 
 /* Hover effect: subtle darkening and stronger shadow */
 .download-btn:hover {
-  background: #e1e1e6;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-  color: #000; /* slightly darker text */
+  background: var(--color-bg);
+  box-shadow: 0 4px 10px var(--color-light-shadow);
+  color:var(--color-accent);
 }
 
 /* Splash animation effect */
