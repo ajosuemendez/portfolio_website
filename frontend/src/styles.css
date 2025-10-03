@@ -5,9 +5,12 @@
   /* Backgrounds */
   --color-bg: #222831;
   --color-primary: #EEEEEE;
+  --color-secondary: #00ADB5;
   --color-accent: #00ADB5;
   --color-hover: #393E46;
   --color-border: #393E46;
+  --color-overlay-loading: #393E46;
+  --dark-semi-transparent: rgba(0,0,0,0.4);
 
   --color-light-shadow: rgba(0, 0, 0, 0.05);
   --color-medium-shadow: rgba(0, 0, 0, 0.1);

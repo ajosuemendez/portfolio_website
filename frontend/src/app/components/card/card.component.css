@@ -3,9 +3,11 @@
 .project-card {
   position: relative; /* Required for absolute positioning */
   border-radius: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 -2px 6px var(--color-light-shadow);
   padding: 1.25rem;
   background-color: var(--color-bg);
+  /* border-color: 1px solid var(--color-border); */
+  border: 1px solid var(--color-border);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -14,7 +16,7 @@
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
   background-color: var(--color-hover);
-  border-color: var(--color-border-light);
+  /* border-color: var(--color-border-light); */
 }
 
 .project-title {
@@ -26,7 +28,9 @@
 }
 
 .tech-chip {
-  background-color: var(--color-secondary);
+  /* background-color: var(--color-secondary); */
+  border: 1px solid var(--color-border);
+  color: var(--color-accent);
   border-radius: 9999px;
   padding: 0.2rem 0.6rem;
   margin: 0 0.3rem 0.3rem 0;
@@ -60,7 +64,7 @@
   bottom: 0rem;
   right: 1rem;
   font-size: 1.5rem;
-  color: var(--color-accent);
+  color: var(--color-primary);
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
@@ -131,8 +135,8 @@
   display: inline-block;
   margin-top: 1rem;
   padding: 0.5rem 1.25rem;
-  background-color: var(--color-primary);
-  color: var(--color-bg);
+  background-color: var(--color-accent);
+  color: var(--color-primary);
   font-size: 0.875rem;
   border-radius: 999px;
   text-decoration: none;
@@ -171,6 +175,5 @@
     transform: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: var(--color-bg);
-    border-color: transparent;
   }
 }
