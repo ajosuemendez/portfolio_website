@@ -114,10 +114,35 @@
   display: block;
 }
 
+/* .top-overlay {
+  width: 100%;
+  background: linear-gradient(180deg, #2A2F36 0%, #2E343D 40%, #323A44 70%, #393E46 100%);
+  background-blend-mode: overlay;
+  z-index: -1;
+} */
+
 .top-overlay {
   width: 100%;
-  background: var(--color-hover);
-  z-index: -1; /* or adjust as needed to stay behind other elements */
+  height: 100%; /* make sure it covers the section */
+  background: 
+    /* Language-specific subtle color spots */
+    radial-gradient(circle at 0% 0%, rgba(0, 32, 91, 0.6), transparent 100%),
+    radial-gradient(circle at 50% 0%, rgba(191, 0, 0, 0.6), transparent 100%),
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.6), transparent 100%),
+    radial-gradient(circle at 0% 50%, rgba(0, 32, 91, 0.6), transparent 100%),
+    radial-gradient(circle at 50% 50%, rgba(191, 0, 0, 0.6), transparent 100%),
+    radial-gradient(circle at 100% 50%, rgba(255, 255, 255, 0.6), transparent 100%),
+    radial-gradient(circle at 0% 80%, rgba(0, 32, 91, 0.15), transparent 100%),
+    radial-gradient(circle at 50% 80%, rgba(191, 0, 0, 0.15), transparent 100%),
+    radial-gradient(circle at 100% 80%, rgba(255, 255, 255, 0.15), transparent 100%),
+    /* Base gradient */
+    linear-gradient(180deg, #222831 0%, #3A3F4B 100%);
+  
+  background-blend-mode: overlay; /* blend colors smoothly */
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1; /* keep behind other elements */
+  transition: background 0.5s ease-in-out; /* smooth language switch */
 }
 
 .scroll-down-indicator {
