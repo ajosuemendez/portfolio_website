@@ -119,3 +119,61 @@
   background: var(--color-hover);
   z-index: -1; /* or adjust as needed to stay behind other elements */
 }
+
+.scroll-down-indicator {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 200px; /* vertical space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden; /* hide dots outside */
+}
+
+.dot {
+  position: absolute;
+  top: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  opacity: 0;
+  animation: drip 5s infinite;
+}
+
+.dot:nth-child(1) { animation-delay: 0s; }
+.dot:nth-child(2) { animation-delay: 1s; }
+.dot:nth-child(3) { animation-delay: 2s; }
+.dot:nth-child(4) { animation-delay: 3s; }
+.dot:nth-child(5) { animation-delay: 4s; }
+
+/* ---- Animation ---- */
+@keyframes drip {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  25% {
+    transform: translateY(40px); /* slow movement */
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(65px); /* slow middle */
+    opacity: 1;
+  }
+  62% {
+    transform: translateY(90px); /* slow middle */
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(130px); /* fast drop start */
+    opacity: 0; /* disappear at fast drop */
+  }
+  100% {
+    transform: translateY(0); /* reset to top */
+    opacity: 0;
+  }
+}
