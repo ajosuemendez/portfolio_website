@@ -2,11 +2,26 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
-  padding: 1rem;
+  padding: 0 1rem;
+  padding-bottom: 1rem;
   color: var(--color-primary);
 }
 
 .section-title {
     margin:0;
     justify-self: center;
+    font-size: 2rem;
+}
+
+/* Initially hidden and slightly moved down */
+.fade-float-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+/* When visible */
+.fade-float-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

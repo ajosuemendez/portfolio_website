@@ -5,6 +5,7 @@
   border-radius: 1rem;
   box-shadow: 0 -2px 6px var(--color-light-shadow);
   padding: 1.25rem;
+  padding-bottom: 2rem;
   background-color: var(--color-bg);
   /* border-color: 1px solid var(--color-border); */
   border: 1px solid var(--color-border);
@@ -20,7 +21,7 @@
 }
 
 .project-title {
-  font-size: 1.4rem;
+  font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
@@ -63,7 +64,7 @@
   position: absolute;
   bottom: 0rem;
   right: 1rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--color-primary);
   transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -71,7 +72,7 @@
 
 .expand-icon.expanded {
   transform: rotate(180deg);
-  bottom: 0.75rem;
+  bottom: 2rem;
   color:var(--color-text-secondary);
 }
 
@@ -137,7 +138,7 @@
   padding: 0.5rem 1.25rem;
   background-color: var(--color-accent);
   color: var(--color-primary);
-  font-size: 0.875rem;
+  font-size: 1.25rem;
   border-radius: 999px;
   text-decoration: none;
   font-weight: 500;

@@ -1,5 +1,9 @@
 <div class="projects-container">
-  <h2 class="section-title">Projects</h2>
+  <h2 #titleRef class="section-title fade-float-in">Projects</h2>
 
-  <card *ngFor="let project of projects" [project]="project"></card>
+  <card
+    *ngFor="let project of projects"
+    class="fade-float-in"
+    [project]="project">
+  </card>
 </div>
