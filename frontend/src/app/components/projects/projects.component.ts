@@ -24,7 +24,7 @@ export class ProjectsComponent implements AfterViewInit {
 
   projects = [
     {
-      title: 'Decision Support App - Slack',
+      title: 'Decision Support App',
       tech: ['React', 'Python', 'MySQL'],
       description: 'App that helps groups to make important decision while traveling on the phone/tablet.',
       expanded: false,
@@ -34,17 +34,10 @@ export class ProjectsComponent implements AfterViewInit {
     {
       title: 'Online Training Chatbot',
       tech: ['React', 'Python', 'Rasa', 'Docker'],
-      description: 'Simulation of people with psychological problems using chatbots for training using appropriate conversation methods..',
+      description: 'A simulation platform that uses chatbots to represent individuals with psychological challenges, designed to train users in effective conversational techniques and appropriate communication strategies.',
       expanded: false,
       imagePath: 'assets/images/chatbot-demo.png',
-    },
-    {
-      title: 'Portfolio Website',
-      tech: ['Angular', 'TypeScript', 'Nginx', 'Docker'],
-      description: 'A personal portfolio showcasing my work and resume.',
-      expanded: false,
-      imagePath: 'assets/images/portfolio.png',
-    },
+    }
   ];
 
   activeIndex = 0;

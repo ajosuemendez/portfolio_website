@@ -7,8 +7,7 @@
   justify-content: space-between;
   border-radius: 1rem;
   box-shadow: 0 -2px 6px var(--color-light-shadow);
-  padding: 1.25rem;
-  padding-bottom: 2rem;
+  padding: 1rem;
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
   cursor: pointer;
@@ -23,8 +22,8 @@
 }
 
 .project-title {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+  margin: 0;
 }
 
 .tech-list {
@@ -36,11 +35,11 @@
   color: var(--color-accent);
   border-radius: 9999px;
   padding: 0.2rem 0.6rem;
-  margin: 0 0.3rem 0.3rem 0;
   font-size: 0.75rem; /* Smaller font */
   font-weight: 500;   /* Optional: Slightly bolder for readability */
   display: inline-block;
   white-space: nowrap;
+  margin-top: 1rem;
 }
 
 .project-details {
@@ -76,7 +75,7 @@
   position: absolute;
   bottom: 0rem;
   right: 1rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--color-primary);
   transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -86,7 +85,7 @@
 }
 
 .mt-1 {
-  margin-top: 0.25rem;
+  margin-top: 1rem;
 }
 
 
@@ -98,7 +97,6 @@
 
 .project-image-wrapper {
   margin-top: 1rem;
-  margin-bottom: 2rem;
   border-radius: 0.75rem;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
@@ -158,7 +156,7 @@
   padding: 0.5rem 1.25rem;
   background-color: var(--color-accent);
   color: var(--color-primary);
-  font-size: 1.25rem;
+  font-size: 1rem;
   border-radius: 999px;
   text-decoration: none;
   font-weight: 500;
