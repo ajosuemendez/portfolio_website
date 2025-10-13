@@ -1,9 +1,20 @@
 <div class="projects-container">
   <h2 #titleRef class="section-title fade-float-in">Projects</h2>
 
-  <card
-    *ngFor="let project of projects"
-    class="fade-float-in"
-    [project]="project">
-  </card>
+  <div class="projects-scroll" #scrollContainer (scroll)="onScroll()">
+    <card
+      *ngFor="let project of projects"
+      class="fade-float-in"
+      [project]="project">
+    </card>
+  </div>
+
+  <!-- Dots indicator -->
+  <div class="scroll-dots">
+    <span
+      *ngFor="let project of projects; let i = index"
+      class="dot"
+      [class.active]="i === activeIndex">
+    </span>
+  </div>
 </div>

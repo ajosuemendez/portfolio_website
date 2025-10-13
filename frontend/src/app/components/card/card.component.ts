@@ -28,13 +28,13 @@ export class CardComponent implements OnInit, OnDestroy {
     this.isMobile = window.innerWidth <= 768;
   }
 
-  toggleDetails() {
-    this.project.expanded = !this.project.expanded;
+  // toggleDetails() {
+  //   this.project.expanded = !this.project.expanded;
 
-    if (this.project.expanded) {
-      setTimeout(() => {
-        this.cardRef.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 300); // Adjust delay to match CSS transition duration
-    }
-  }
+  //   if (this.project.expanded) {
+  //     setTimeout(() => {
+  //       this.cardRef.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //     }, 300); // Adjust delay to match CSS transition duration
+  //   }
+  // }
 }

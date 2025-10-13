@@ -1,13 +1,15 @@
 @import url('https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
 
 .project-card {
-  position: relative; /* Required for absolute positioning */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: 1rem;
   box-shadow: 0 -2px 6px var(--color-light-shadow);
   padding: 1.25rem;
   padding-bottom: 2rem;
   background-color: var(--color-bg);
-  /* border-color: 1px solid var(--color-border); */
   border: 1px solid var(--color-border);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -49,10 +51,20 @@
 }
 
 .project-details.expanded {
-  max-height: 500px; /* adjust if needed */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 500px;
   opacity: 1;
 }
 
+/* Ensure description always starts at the same vertical level */
+.project-details p {
+  flex-grow: 1;
+  margin-top: 1rem;   /* control spacing from image */
+  min-height: 3.5rem; /* adjust this for consistent vertical start */
+}
 
 .card-header {
   display: flex;
@@ -67,6 +79,14 @@
   font-size: 2rem;
   color: var(--color-primary);
   transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
 
@@ -133,8 +153,8 @@
 }
 
 .visit-button {
-  display: inline-block;
-  margin-top: 1rem;
+  margin-top: auto;
+  align-self: flex-start;
   padding: 0.5rem 1.25rem;
   background-color: var(--color-accent);
   color: var(--color-primary);

@@ -1,4 +1,4 @@
-<div #cardRef class="project-card" (click)="toggleDetails()">
+<div #cardRef class="project-card">
   <div class="card-header">
     <h3 class="project-title">{{ project.title }}</h3>
   </div>
@@ -26,14 +26,10 @@
     </ng-template>
   </div>
 
-  <div class="project-details" [class.expanded]="project.expanded">
+  <div class="project-details expanded">
     <p>{{ project.description }}</p>
       <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="visit-button" (click)="$event.stopPropagation()">
         Visit Site
       </a>
-  </div>
-
-  <div class="expand-icon" [class.expanded]="project.expanded">
-    <i class="fi fi-rr-angle-small-down"></i>
   </div>
 </div>
