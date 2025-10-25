@@ -17,6 +17,7 @@ import {
 } from '@angular/router';
 import { LanguageService } from '../services/language.service';
 import { Subscription } from 'rxjs';
+import { translations } from '../../translations/translations';
 
 @Component({
   selector: 'app-layout',
@@ -33,6 +34,7 @@ export class LayoutComponent implements AfterViewInit, OnInit, OnDestroy {
   isLoading = false;
 
   selectedLang: 'en' | 'de' = 'en';
+  navLabels: any = {};
   currentRoute: string = '';
 
   private languageSubscription!: Subscription;
@@ -54,6 +56,7 @@ export class LayoutComponent implements AfterViewInit, OnInit, OnDestroy {
 
     this.languageSubscription = this.languageService.language$.subscribe((lang) => {
       this.selectedLang = lang;
+      this.navLabels = translations[lang].navLabels;
     });
 
     this.routerSubscription = this.router.events.subscribe((event) => {

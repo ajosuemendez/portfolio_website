@@ -29,7 +29,7 @@
   <div class="project-details expanded">
     <p>{{ project.description }}</p>
       <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="visit-button" (click)="$event.stopPropagation()">
-        Visit Site
+        {{ visitSiteText  }}
       </a>
   </div>
 </div>

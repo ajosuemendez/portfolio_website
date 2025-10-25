@@ -35,7 +35,7 @@
       <span class="nav-icon">
         <i [ngClass]="pressedButton === '/' ? 'fi fi-sr-home' : 'fi fi-rr-home'"></i>
       </span>
-      <span class="label">Home</span>
+      <span class="label">{{ navLabels.home }}</span>
     </button>
 
     <button
@@ -47,7 +47,7 @@
       <span class="nav-icon">
         <i [ngClass]="pressedButton === '/me' ? 'fi fi-sr-user' : 'fi fi-rr-user'"></i>
       </span>
-      <span class="label">Me</span>
+      <span class="label">{{ navLabels.me }}</span>
     </button>
 
     <button
@@ -59,7 +59,7 @@
       <span class="nav-icon">
         <i [ngClass]="pressedButton === '/work' ? 'fi fi-sr-computer' : 'fi fi-rr-computer'"></i>
       </span>
-      <span class="label">Work</span>
+      <span class="label">{{ navLabels.work }}</span>
     </button>
 
     <button
@@ -71,7 +71,7 @@
       <span class="nav-icon">
         <i [ngClass]="pressedButton === '/email' ? 'fi fi-sr-envelope' : 'fi fi-rr-envelope'"></i>
       </span>
-      <span class="label">Email</span>
+      <span class="label">{{ navLabels.email }}</span>
     </button>
 
     <button
@@ -83,7 +83,7 @@
       <span class="nav-icon">
         <i [ngClass]="pressedButton === '/cv' ? 'fi fi-sr-file' : 'fi fi-rr-file'"></i>
       </span>
-      <span class="label">CV</span>
+      <span class="label">{{ navLabels.cv }}</span>
     </button>
   </nav>
 </div>
