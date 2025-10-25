@@ -35,6 +35,7 @@ export class LayoutComponent implements AfterViewInit, OnInit, OnDestroy {
 
   selectedLang: 'en' | 'de' = 'en';
   navLabels: any = {};
+  loadingText = '';
   currentRoute: string = '';
 
   private languageSubscription!: Subscription;
@@ -57,6 +58,7 @@ export class LayoutComponent implements AfterViewInit, OnInit, OnDestroy {
     this.languageSubscription = this.languageService.language$.subscribe((lang) => {
       this.selectedLang = lang;
       this.navLabels = translations[lang].navLabels;
+      this.loadingText = translations[lang].uiText.loadingText;
     });
 
     this.routerSubscription = this.router.events.subscribe((event) => {

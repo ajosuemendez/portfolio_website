@@ -4,6 +4,7 @@ export const translations = {
     uiText: {
       visitSite: 'Visit Site',
       download: 'Download',
+      loadingText: 'Code in progress…'
     },
     navLabels: {
       home: 'Home',
@@ -33,6 +34,7 @@ export const translations = {
     uiText: {
       visitSite: 'Website besuchen',
       download: 'Herunterladen',
+      loadingText: 'Code am Kochen...'
     },
     navLabels: {
       home: 'Start',
