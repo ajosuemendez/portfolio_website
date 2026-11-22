@@ -9,18 +9,20 @@
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --vh: 100%;
-  --color-bg: #101312;
-  --color-surface: #171c1a;
-  --color-surface-raised: #1d2421;
-  --color-primary: #f2f1e9;
-  --color-secondary: #a9b0aa;
-  --color-accent: #c8f169;
-  --color-hover: #202824;
-  --color-border: rgba(229, 236, 225, 0.14);
-  --color-border-strong: rgba(229, 236, 225, 0.28);
-  --dark-semi-transparent: rgba(8, 11, 10, 0.86);
+  --color-bg: #f5f7fc;
+  --color-surface: #ffffff;
+  --color-surface-raised: #ebeff8;
+  --color-primary: #16223a;
+  --color-secondary: #58657d;
+  --color-accent: #3f5fd7;
+  --color-koi: #d96f35;
+  --color-hover: #e9edfa;
+  --color-paper: #eef1fa;
+  --color-border: rgba(22, 34, 58, 0.13);
+  --color-border-strong: rgba(22, 34, 58, 0.28);
+  --dark-semi-transparent: rgba(22, 34, 58, 0.78);
   --page-width: 1320px;
   --page-gutter: clamp(1.15rem, 5vw, 5.25rem);
   --font-display: 'Manrope', 'Open Sans Local', sans-serif;
@@ -190,5 +192,17 @@ a:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (min-width: 900px) {
+  :root {
+    --desktop-nav-width: 280px;
+    --desktop-shell-offset: max(0px, calc((100vw - var(--page-width)) / 2));
+  }
+
+  .page-shell {
+    padding-left: calc(var(--page-gutter) + var(--desktop-nav-width));
+    padding-right: var(--page-gutter);
   }
 }
