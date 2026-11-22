@@ -1,7 +1,7 @@
-version: '3'
 services:
   portfolio-frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
     container_name: portfolio-frontend
     ports:
       - "4200:4200"
@@ -10,12 +10,4 @@ services:
       - /app/node_modules
     restart: unless-stopped
     environment:
-      - CHOKIDAR_USEPOLLING=true
-    command: sh -c "npm install && npm start -- --host 0.0.0.0"
-    networks:
-      - app_network
-      
-networks:
-  app_network:
-    external: true
-    name: shared-network
+      CHOKIDAR_USEPOLLING: "true"
