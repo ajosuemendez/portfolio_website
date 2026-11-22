@@ -1,20 +1,17 @@
-<div class="projects-container">
-  <h2 #titleRef class="section-title fade-float-in delay-1">{{ projectsTitle }}</h2>
+<section class="projects-section page-shell" [class.archive-mode]="variant === 'work'" aria-labelledby="projects-title">
+  <header class="projects-heading">
+    <div class="projects-heading-copy">
+      <p class="eyebrow">{{ eyebrow }}</p>
+      <h1 *ngIf="variant === 'work'; else sectionTitle" id="projects-title" class="section-heading">{{ title }}</h1>
+      <ng-template #sectionTitle>
+        <h2 id="projects-title" class="section-heading">{{ title }}</h2>
+      </ng-template>
+      <p class="section-intro">{{ description }}</p>
+    </div>
+    <span class="project-total mono-label"><span aria-hidden="true">[</span> {{ projects.length }} <span aria-hidden="true">]</span></span>
+  </header>
 
-  <div class="projects-scroll" #scrollContainer (scroll)="onScroll()">
-    <card
-      *ngFor="let project of projects"
-      class="fade-float-in"
-      [project]="project">
-    </card>
+  <div class="projects-grid">
+    <card *ngFor="let project of projects; let i = index" [project]="project" [index]="i"></card>
   </div>
-
-  <!-- Dots indicator -->
-  <div class="scroll-dots">
-    <span
-      *ngFor="let project of projects; let i = index"
-      class="dot"
-      [class.active]="i === activeIndex">
-    </span>
-  </div>
-</div>
+</section>

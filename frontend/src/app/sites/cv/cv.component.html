@@ -1,11 +1,22 @@
-<div class="pdf-preview">
-  <pdf-viewer [src]="pdfSrc"
-              [render-text]="true"
-              [original-size]="false"
-              [zoom]="1"
-              class="pdf-container">
-              
-              
-  </pdf-viewer>
-  <a href="assets/cvs/Lebenslauf_Alejandro_Mendez.pdf" download class="download-btn">{{ downloadText }} <i class="fi fi-br-download"></i></a>
+<div class="cv-page page-shell">
+  <header class="cv-heading">
+    <div>
+      <p class="eyebrow">{{ cvCopy.eyebrow }}</p>
+      <h1 class="page-title">{{ cvCopy.title }}</h1>
+      <p class="page-lede">{{ cvCopy.intro }}</p>
+    </div>
+    <a href="assets/cvs/Lebenslauf_Alejandro_Mendez.pdf" download class="action-link download-btn">
+      {{ downloadText }} <span aria-hidden="true">↓</span>
+    </a>
+  </header>
+  <div class="pdf-frame">
+    <pdf-viewer
+      [src]="pdfSrc"
+      [render-text]="true"
+      [original-size]="false"
+      [zoom]="1"
+      class="pdf-container"
+      [attr.aria-label]="cvCopy.title"
+    ></pdf-viewer>
+  </div>
 </div>

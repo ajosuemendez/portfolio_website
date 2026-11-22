@@ -1,136 +1,69 @@
 import { CommonModule } from '@angular/common';
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  ViewChild,
-  OnInit,
-  OnDestroy,
-} from '@angular/core';
-import {
-  Router,
-  NavigationEnd,
-  RouterOutlet,
-  NavigationStart,
-  NavigationCancel,
-  NavigationError,
-} from '@angular/router';
-import { LanguageService } from '../services/language.service';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { translations } from '../../translations/translations';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css'],
 })
-export class LayoutComponent implements AfterViewInit, OnInit, OnDestroy {
+export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('contentArea') contentArea!: ElementRef<HTMLElement>;
 
-  isScrolled = false;
-  isHome = false;
-  isLoading = false;
-
   selectedLang: 'en' | 'de' = 'en';
-  navLabels: any = {};
-  loadingText = '';
-  currentRoute: string = '';
+  navLabels: Record<keyof typeof translations.en.navLabels, string> = translations.en.navLabels;
+  uiText: Record<keyof typeof translations.en.uiText, string> = translations.en.uiText;
+  mobileMenuOpen = false;
 
-  private languageSubscription!: Subscription;
-  private routerSubscription!: Subscription;
+  readonly navItems: { path: string; label: keyof typeof translations.en.navLabels }[] = [
+    { path: '/', label: 'home' },
+    { path: '/me', label: 'me' },
+    { path: '/work', label: 'work' },
+    { path: '/email', label: 'email' },
+    { path: '/cv', label: 'cv' },
+  ];
 
-  debouncedIsLoading = false;
-  private loadingTimeout: any;
+  private languageSubscription?: Subscription;
+  private routerSubscription?: Subscription;
 
-  constructor(
-    private router: Router,
-    private languageService: LanguageService
-  ) {}
+  constructor(private languageService: LanguageService, private router: Router) {}
 
-  ngOnInit() {
-    this.setViewportHeight();
-    window.addEventListener('resize', this.setViewportHeight);
-
-    this.pressedButton = this.router.url;
-
+  ngOnInit(): void {
     this.languageSubscription = this.languageService.language$.subscribe((lang) => {
       this.selectedLang = lang;
+      document.documentElement.lang = lang;
       this.navLabels = translations[lang].navLabels;
-      this.loadingText = translations[lang].uiText.loadingText;
-    });
-
-    this.routerSubscription = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        this.isLoading = true;
-
-        // Delay setting the visible loading flag to avoid flicker
-        clearTimeout(this.loadingTimeout);
-        this.loadingTimeout = setTimeout(() => {
-          if (this.isLoading) {
-            this.debouncedIsLoading = true;
-          }
-        }, 100); // 100ms threshold – adjust as needed
-
-      } else if (
-        event instanceof NavigationEnd ||
-        event instanceof NavigationCancel ||
-        event instanceof NavigationError
-      ) {
-        this.isLoading = false;
-
-        // Small delay to allow fade out
-        clearTimeout(this.loadingTimeout);
-        setTimeout(() => {
-          this.debouncedIsLoading = false;
-        }, 100); // smooth fade-out
-      }
-
-      if (event instanceof NavigationEnd) {
-        this.currentRoute = event.urlAfterRedirects;
-        this.isHome = this.currentRoute === '/' || this.currentRoute === '/home';
-      }
+      this.uiText = translations[lang].uiText;
     });
   }
 
   ngAfterViewInit(): void {
-    this.contentArea.nativeElement.addEventListener('scroll', () => {
-      this.isScrolled = this.contentArea.nativeElement.scrollTop > 440;
+    this.routerSubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.contentArea.nativeElement.scrollTop = 0;
+      }
     });
   }
 
-  ngOnDestroy() {
-    window.removeEventListener('resize', this.setViewportHeight);
+  ngOnDestroy(): void {
     this.languageSubscription?.unsubscribe();
     this.routerSubscription?.unsubscribe();
   }
 
-  setViewportHeight = () => {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  };
-
-  navigate(path: string): void {
-    this.isLoading = true; // immediate feedback
-    requestAnimationFrame(() => {
-      this.router.navigate([path]);
-    });
+  toggleMenu(): void {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 
-  toggleLanguage() {
-    this.languageService.toggleLanguage();
+  closeMenu(): void {
+    this.mobileMenuOpen = false;
   }
 
-  pressedButton: string | null = null;
-
-  handlePress(path: string): void {
-    this.pressedButton = path;
-  }
-
-  handleRelease(): void {
-    setTimeout(() => {
-      this.pressedButton = null;
-    }, 150);
+  setLanguage(lang: 'en' | 'de'): void {
+    this.languageService.setLanguage(lang);
   }
 }

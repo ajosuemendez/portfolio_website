@@ -1,19 +1,46 @@
-<div class="top-overlay" [class.de]="selectedLang === 'de'"
-  [ngStyle]="{ height: topOverlayHeight + 'px' }">
-  <div class="profile-container">
-   <h2 class="profile-title profile-animate">Fullstack Software Developer</h2>
-    <div class="profile-pic profile-animate"></div>
-    <h2 class="profile-name profile-animate">Alejandro Mendez</h2>
-    <div #languageSwitchContainer class="language-switch switch-animate">
-      <div class="highlight" [class.right]="selectedLang === 'de'"></div>
-  
-      <button (click)="toggleLanguage()">
-        <img src="assets/images/english-flag.png" alt="English" />
-      </button>
-      <button (click)="toggleLanguage()">
-        <img src="assets/images/german-flag.png" alt="Deutsch" />
-      </button>
+<div class="home-page">
+  <section class="home-hero page-shell" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow reveal-in">{{ homeCopy.eyebrow }}</p>
+      <h1 id="hero-title" class="hero-title">
+        <span class="hero-line reveal-in">{{ homeCopy.titleLead }}</span>
+        <span class="hero-line hero-line-accent reveal-in">{{ homeCopy.titleTail }}</span>
+      </h1>
+      <p class="hero-statement reveal-in">{{ homeCopy.statement }}</p>
+
+      <div class="hero-actions reveal-in">
+        <a class="action-link" routerLink="/work">
+          {{ homeCopy.workCta }} <span aria-hidden="true">↘</span>
+        </a>
+        <a class="text-link" routerLink="/cv">
+          {{ homeCopy.cvCta }} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div class="hero-index mono-label reveal-in" aria-hidden="true">
+        <span>AJM / 01</span><span class="index-rule"></span><span>Portfolio</span>
+      </div>
     </div>
-  </div>
+
+    <figure class="hero-portrait reveal-in">
+      <div class="portrait-frame">
+        <img src="assets/images/profile.jpeg" [alt]="homeCopy.portraitAlt" />
+        <span class="portrait-corner portrait-corner-top" aria-hidden="true"></span>
+        <span class="portrait-corner portrait-corner-bottom" aria-hidden="true"></span>
+      </div>
+      <figcaption class="portrait-caption">
+        <span class="mono-label">{{ homeCopy.capabilityLabel }}</span>
+        <span class="portrait-caption-note">{{ homeCopy.scrollHint }}</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="stack-strip page-shell" [attr.aria-label]="homeCopy.capabilityLabel">
+    <span class="mono-label stack-label">{{ homeCopy.capabilityLabel }}</span>
+    <ul>
+      <li *ngFor="let capability of homeCopy.capabilityItems">{{ capability }}</li>
+    </ul>
+  </section>
+
   <projects></projects>
 </div>

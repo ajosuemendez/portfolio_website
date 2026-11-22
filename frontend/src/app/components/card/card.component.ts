@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { LanguageService } from '../../services/language.service';
-import { translations } from '../../../translations/translations';
-import { Component, Input, ViewChild, ElementRef, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { translations } from '../../../translations/translations';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'card',
@@ -12,41 +12,26 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit, OnDestroy {
-  @Input() project: any;  // Accepts a single project object
+  @Input() project: any;
+  @Input() index = 0;
 
-  @ViewChild('cardRef') cardRef!: ElementRef<HTMLDivElement>;
+  visitSiteText = translations.en.uiText.visitSite;
+  imageLabel = translations.en.uiText.projectImage;
+  externalLinkLabel = translations.en.uiText.externalLink;
 
-  isMobile = false;
-
-  visitSiteText = 'Visit Site';
-  private langSub!: Subscription;
+  private languageSubscription?: Subscription;
 
   constructor(private languageService: LanguageService) {}
 
   ngOnInit(): void {
-    this.langSub = this.languageService.language$.subscribe(lang => {
+    this.languageSubscription = this.languageService.language$.subscribe((lang) => {
       this.visitSiteText = translations[lang].uiText.visitSite;
+      this.imageLabel = translations[lang].uiText.projectImage;
+      this.externalLinkLabel = translations[lang].uiText.externalLink;
     });
-    this.checkMobile();
-    window.addEventListener('resize', this.checkMobile);
   }
 
   ngOnDestroy(): void {
-    window.removeEventListener('resize', this.checkMobile);
-    this.langSub.unsubscribe();
+    this.languageSubscription?.unsubscribe();
   }
-
-  checkMobile = () => {
-    this.isMobile = window.innerWidth <= 768;
-  }
-
-  // toggleDetails() {
-  //   this.project.expanded = !this.project.expanded;
-
-  //   if (this.project.expanded) {
-  //     setTimeout(() => {
-  //       this.cardRef.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  //     }, 300); // Adjust delay to match CSS transition duration
-  //   }
-  // }
 }

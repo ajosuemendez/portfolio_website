@@ -1,0 +1,50 @@
+<div class="about-page page-shell">
+  <header class="page-intro reveal-in">
+    <p class="eyebrow">{{ aboutCopy.eyebrow }}</p>
+    <h1 class="page-title">{{ aboutCopy.title }}</h1>
+    <p class="page-lede">{{ aboutCopy.intro }}</p>
+  </header>
+
+  <section class="about-section capabilities-section" aria-labelledby="capabilities-title">
+    <div class="section-kicker">
+      <span class="mono-label">01</span>
+      <h2 id="capabilities-title">{{ aboutCopy.capabilityTitle }}</h2>
+    </div>
+    <dl class="capability-list">
+      <div class="capability-row" *ngFor="let capability of aboutCopy.capabilities; let i = index">
+        <dt><span class="capability-number">0{{ i + 1 }}</span>{{ capability.label }}</dt>
+        <dd>{{ capability.value }}</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="about-section experience-section" aria-labelledby="experience-title">
+    <div class="section-kicker">
+      <span class="mono-label">02</span>
+      <h2 id="experience-title">{{ aboutCopy.experienceTitle }}</h2>
+    </div>
+    <div class="experience-list">
+      <article class="experience-row" *ngFor="let experience of aboutCopy.experiences; let i = index">
+        <span class="experience-number mono-label">0{{ i + 1 }}</span>
+        <div class="experience-main">
+          <h3>{{ experience.role }}</h3>
+          <p class="experience-organization">{{ experience.organization }}</p>
+        </div>
+        <p class="experience-detail">{{ experience.detail }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="about-section education-section" aria-labelledby="education-title">
+    <div class="section-kicker">
+      <span class="mono-label">03</span>
+      <h2 id="education-title">{{ aboutCopy.educationTitle }}</h2>
+    </div>
+    <div class="education-list">
+      <article class="education-item" *ngFor="let education of aboutCopy.education">
+        <h3>{{ education.title }}</h3>
+        <p>{{ education.detail }}</p>
+      </article>
+    </div>
+  </section>
+</div>

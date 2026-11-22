@@ -1,46 +1,32 @@
-// product-list.component.ts
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { translations } from '../../../translations/translations';
 import { ProjectsComponent } from '../../components/projects/projects.component';
 import { LanguageService } from '../../services/language.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'home',
   standalone: true,
-  imports: [CommonModule, ProjectsComponent],
+  imports: [CommonModule, RouterLink, ProjectsComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit, OnDestroy, AfterViewInit  {
-  selectedLang: 'en' | 'de' = 'en';
-  private langSub!: Subscription;
-  @ViewChild('languageSwitchContainer') languageSwitchContainer!: ElementRef<HTMLDivElement>;
-  topOverlayHeight: number = 0;
+export class HomeComponent implements OnInit, OnDestroy {
+  homeCopy: any = translations.en.home;
+
+  private languageSubscription?: Subscription;
 
   constructor(private languageService: LanguageService) {}
 
-  ngOnInit() {
-    this.langSub = this.languageService.language$.subscribe(lang => {
-      this.selectedLang = lang;
+  ngOnInit(): void {
+    this.languageSubscription = this.languageService.language$.subscribe((lang) => {
+      this.homeCopy = translations[lang].home;
     });
   }
 
-   ngAfterViewInit(): void {
-  setTimeout(() => {
-    const rect = this.languageSwitchContainer.nativeElement.getBoundingClientRect();
-    this.topOverlayHeight = rect.top + rect.height / 2;
-    console.log('Overlay height:', this.topOverlayHeight);
-  });
-}
-
-  ngOnDestroy() {
-    if (this.langSub) {
-      this.langSub.unsubscribe();
-    }
-  }
-
-  toggleLanguage() {
-    this.languageService.toggleLanguage();
+  ngOnDestroy(): void {
+    this.languageSubscription?.unsubscribe();
   }
 }

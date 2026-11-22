@@ -1,0 +1,25 @@
+<div class="contact-page page-shell">
+  <header class="page-intro reveal-in">
+    <p class="eyebrow">{{ contactCopy.eyebrow }}</p>
+    <h1 class="page-title">{{ contactCopy.title }}</h1>
+    <p class="page-lede">{{ contactCopy.intro }}</p>
+  </header>
+
+  <section class="contact-details" [attr.aria-label]="contactCopy.eyebrow">
+    <a class="contact-detail contact-email" [href]="'mailto:' + email">
+      <span class="mono-label">{{ contactCopy.emailLabel }}</span>
+      <span class="contact-value">{{ email }}</span>
+      <span class="contact-arrow" aria-hidden="true">↗</span>
+    </a>
+    <a class="contact-detail" [href]="'tel:' + phoneHref">
+      <span class="mono-label">{{ contactCopy.phoneLabel }}</span>
+      <span class="contact-value">{{ phone }}</span>
+      <span class="contact-arrow" aria-hidden="true">↗</span>
+    </a>
+  </section>
+
+  <section class="contact-cv">
+    <p>{{ contactCopy.cvNote }}</p>
+    <a class="action-link" routerLink="/cv">{{ contactCopy.cvCta }} <span aria-hidden="true">↗</span></a>
+  </section>
+</div>

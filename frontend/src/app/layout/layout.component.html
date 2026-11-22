@@ -1,89 +1,53 @@
 <div class="app-container">
-  <!-- <header class="app-header" [class.hidden]="!isScrolled">
-    <div class="header-center">
-      <div class="profile-icon" aria-label="Profile"></div>
-      <span class="brand">
-        Ajosuemendez
-      </span>
-      <div class="language-switch-single" (click)="toggleLanguage()" aria-label="Toggle language">
-        <img
-          [src]="selectedLang === 'en' ? 'assets/images/english-flag.png' : 'assets/images/german-flag.png'"
-          [alt]="selectedLang === 'en' ? 'English' : 'Deutsch'"
-        />
-      </div>
-    </div>
-  </header> -->
+  <a class="skip-link" href="#main-content">{{ uiText.skipToContent }}</a>
+  <header class="site-header" (keydown.escape)="closeMenu()">
+    <div class="header-inner page-shell">
+      <a class="brand" routerLink="/" [attr.aria-label]="uiText.homePage" (click)="closeMenu()">
+        <span class="brand-mark" aria-hidden="true">AM</span>
+        <span class="brand-name">Alejandro Mendez<span class="brand-period">.</span></span>
+      </a>
 
-  <main #contentArea class="app-content">
-    <div class="loading-overlay" *ngIf="debouncedIsLoading">
-      <div class="code-loader">
-        <span class="code-symbol">&lt;&gt;</span>
-        <span class="typing-text">{{ loadingText }}</span>
-        <span class="code-symbol">&lt;/&gt;</span>
+      <nav id="primary-navigation" class="site-navigation" [class.is-open]="mobileMenuOpen" [attr.aria-label]="uiText.navigation">
+        <a
+          *ngFor="let item of navItems"
+          class="nav-link"
+          [class.nav-cv]="item.path === '/cv'"
+          [routerLink]="item.path"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : { exact: false }"
+          ariaCurrentWhenActive="page"
+          (click)="closeMenu()"
+        >{{ navLabels[item.label] }}</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="language-switch" role="group" [attr.aria-label]="uiText.language">
+          <button type="button" [attr.aria-label]="uiText.englishLanguage" [class.is-selected]="selectedLang === 'en'" [attr.aria-pressed]="selectedLang === 'en'" (click)="setLanguage('en')">
+            <img src="assets/images/english-flag.png" alt="" />
+            <span>EN</span>
+          </button>
+          <span class="language-divider" aria-hidden="true"></span>
+          <button type="button" [attr.aria-label]="uiText.germanLanguage" [class.is-selected]="selectedLang === 'de'" [attr.aria-pressed]="selectedLang === 'de'" (click)="setLanguage('de')">
+            <img src="assets/images/german-flag.png" alt="" />
+            <span>DE</span>
+          </button>
+        </div>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-controls="primary-navigation"
+          [attr.aria-expanded]="mobileMenuOpen"
+          [attr.aria-label]="mobileMenuOpen ? uiText.closeMenu : uiText.menu"
+          (click)="toggleMenu()"
+        >
+          <span></span><span></span>
+        </button>
       </div>
     </div>
+  </header>
+
+  <main #contentArea class="app-content" id="main-content" tabindex="-1">
     <router-outlet></router-outlet>
   </main>
-
-  <nav class="bottom-nav">
-    <button
-      class="nav-item"
-      [class.pressed]="pressedButton === '/'"
-      (touchstart)="handlePress('/')"
-      (click)="navigate('/')"
-    >
-      <span class="nav-icon">
-        <i [ngClass]="pressedButton === '/' ? 'fi fi-sr-home' : 'fi fi-rr-home'"></i>
-      </span>
-      <span class="label">{{ navLabels.home }}</span>
-    </button>
-
-    <button
-      class="nav-item"
-      [class.pressed]="pressedButton === '/me'"
-      (touchstart)="handlePress('/me')"
-      (click)="navigate('/me')"
-    >
-      <span class="nav-icon">
-        <i [ngClass]="pressedButton === '/me' ? 'fi fi-sr-user' : 'fi fi-rr-user'"></i>
-      </span>
-      <span class="label">{{ navLabels.me }}</span>
-    </button>
-
-    <button
-      class="nav-item"
-      [class.pressed]="pressedButton === '/work'"
-      (touchstart)="handlePress('/work')"
-      (click)="navigate('/work')"
-    >
-      <span class="nav-icon">
-        <i [ngClass]="pressedButton === '/work' ? 'fi fi-sr-computer' : 'fi fi-rr-computer'"></i>
-      </span>
-      <span class="label">{{ navLabels.work }}</span>
-    </button>
-
-    <button
-      class="nav-item"
-      [class.pressed]="pressedButton === '/email'"
-      (touchstart)="handlePress('/email')"
-      (click)="navigate('/email')"
-    >
-      <span class="nav-icon">
-        <i [ngClass]="pressedButton === '/email' ? 'fi fi-sr-envelope' : 'fi fi-rr-envelope'"></i>
-      </span>
-      <span class="label">{{ navLabels.email }}</span>
-    </button>
-
-    <button
-      class="nav-item"
-      [class.pressed]="pressedButton === '/cv'"
-      (touchstart)="handlePress('/cv')"
-      (click)="navigate('/cv')"
-    >
-      <span class="nav-icon">
-        <i [ngClass]="pressedButton === '/cv' ? 'fi fi-sr-file' : 'fi fi-rr-file'"></i>
-      </span>
-      <span class="label">{{ navLabels.cv }}</span>
-    </button>
-  </nav>
 </div>

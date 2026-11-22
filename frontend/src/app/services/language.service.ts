@@ -11,6 +11,10 @@ export class LanguageService {
     this.languageSubject.next(current === 'en' ? 'de' : 'en');
   }
 
+  setLanguage(language: 'en' | 'de') {
+    this.languageSubject.next(language);
+  }
+
   getCurrentLanguage() {
     return this.languageSubject.value;
   }

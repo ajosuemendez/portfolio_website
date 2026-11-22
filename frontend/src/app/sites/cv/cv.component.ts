@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 export class CvComponent implements OnInit, OnDestroy {
   pdfSrc = "assets/cvs/Lebenslauf_Alejandro_Mendez.pdf";
   downloadText = 'Download';
+  cvCopy: any = translations.en.cv;
 
   private langSub!: Subscription;
 
@@ -23,6 +24,7 @@ export class CvComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.langSub = this.languageService.language$.subscribe((lang: 'en' | 'de') => {
       this.downloadText = translations[lang].uiText.download;
+      this.cvCopy = translations[lang].cv;
     });
   }
 

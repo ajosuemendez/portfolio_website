@@ -1,35 +1,43 @@
-<div #cardRef class="project-card">
-  <div class="card-header">
+<article class="project-card" [style.--card-order]="index">
+  <div class="card-heading">
+    <span class="project-number mono-label">0{{ index + 1 }}</span>
     <h3 class="project-title">{{ project.title }}</h3>
-  </div>
-
-  <div class="tech-list">
-    <span *ngFor="let tech of project.tech" class="tech-chip">{{ tech }}</span>
+    <span *ngIf="project.link" class="project-arrow" aria-hidden="true">↗</span>
   </div>
 
   <div class="project-image-wrapper">
-    <ng-container *ngIf="!isMobile; else noLink">
-      <a
-        [href]="project.link"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="image-link"
-        (click)="$event.stopPropagation()"
-      >
-        <img class="project-image" src="{{ project.imagePath }}" alt="{{ project.title }}" />
-      </a>
-    </ng-container>
-    <ng-template #noLink>
+    <a
+      *ngIf="project.link; else imageOnly"
+      class="image-link"
+      [href]="project.link"
+      target="_blank"
+      rel="noopener noreferrer"
+      [attr.aria-label]="project.title + ' — ' + visitSiteText + '. ' + externalLinkLabel"
+    >
+      <img class="project-image" [src]="project.imagePath" [alt]="project.title + ' — ' + imageLabel" loading="lazy" />
+      <span class="image-link-mark" aria-hidden="true">↗</span>
+    </a>
+    <ng-template #imageOnly>
       <div class="image-link">
-        <img class="project-image" src="{{ project.imagePath }}" alt="{{ project.title }}" />
+        <img class="project-image" [src]="project.imagePath" [alt]="project.title + ' — ' + imageLabel" loading="lazy" />
       </div>
     </ng-template>
   </div>
 
-  <div class="project-details expanded">
-    <p>{{ project.description }}</p>
-      <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="visit-button" (click)="$event.stopPropagation()">
-        {{ visitSiteText  }}
-      </a>
+  <div class="project-information">
+    <div class="tech-list">
+      <span *ngFor="let tech of project.tech" class="tech-chip">{{ tech }}</span>
+    </div>
+    <p class="project-description">{{ project.description }}</p>
+    <a
+      *ngIf="project.link"
+      [href]="project.link"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="visit-link"
+      [attr.aria-label]="project.title + ' — ' + visitSiteText + '. ' + externalLinkLabel"
+    >
+      {{ visitSiteText }} <span aria-hidden="true">↗</span>
+    </a>
   </div>
-</div>
+</article>
