@@ -17,8 +17,8 @@ export class AboutComponent implements OnInit, OnDestroy {
 
   private readonly tabOrder: Array<'intro' | 'capabilities' | 'experience' | 'education'> = [
     'intro',
-    'capabilities',
     'experience',
+    'capabilities',
     'education',
   ];
   private languageSubscription?: Subscription;

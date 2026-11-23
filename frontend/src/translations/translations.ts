@@ -35,11 +35,11 @@ export const translations = {
       ],
       experienceTitle: 'Experience',
       experiences: [
-        { role: 'Full-stack Software Developer (working student)', organization: 'EXOR PRO GmbH', detail: 'Feature development with Angular (TypeScript) and .NET (C#); improving existing systems and collaborating in an agile team.' },
-        { role: 'Software Developer — Data Visualization (working student)', organization: 'Bertrandt AG', detail: 'Python tooling for automated data visualization, including interactive charts and dashboards.' },
-        { role: 'Software Developer — Chatbot & Automation (student assistant)', organization: 'Institute for Mobile Dialog Systems, OvGU Magdeburg', detail: 'Python/Flask chatbot system, a Vue.js interface, and deployment pipelines for containerized applications.' },
-        { role: 'ML Development — Vehicle Detection (student assistant)', organization: 'AuRa-Hirn project, OvGU Magdeburg', detail: 'Implemented and trained neural networks in Python for object and pedestrian detection, with ROS2 testing and integration.' },
-        { role: 'Software Developer — Robotics (intern)', organization: 'DOLD Mechatronik GmbH', detail: 'Inverse-kinematics modeling for a CNC gantry milling machine and a control interface built with Python and PyQt.' },
+        { role: 'Full-stack Software Developer (working student)', organization: 'EXOR PRO GmbH', period: 'Since March 2024', detail: 'Feature development with Angular (TypeScript) and .NET (C#); improving existing systems and collaborating in an agile team.' },
+        { role: 'Software Developer — Data Visualization (working student)', organization: 'Bertrandt AG', period: 'February 2023 – February 2024', detail: 'Python tooling for automated data visualization, including interactive charts and dashboards.' },
+        { role: 'Software Developer — Chatbot & Automation (student assistant)', organization: 'Institute for Mobile Dialog Systems, OvGU Magdeburg', period: 'September 2023 – January 2024', detail: 'Python/Flask chatbot system, a Vue.js interface, and deployment pipelines for containerized applications.' },
+        { role: 'ML Development — Vehicle Detection (student assistant)', organization: 'AuRa-Hirn project, OvGU Magdeburg', period: 'March 2023 – August 2023', detail: 'Implemented and trained neural networks in Python for object and pedestrian detection, with ROS2 testing and integration.' },
+        { role: 'Software Developer — Robotics (intern)', organization: 'DOLD Mechatronik GmbH', period: 'November 2021 – April 2022', detail: 'Inverse-kinematics modeling for a CNC gantry milling machine and a control interface built with Python and PyQt.' },
       ],
       educationTitle: 'Education',
       education: [
@@ -142,11 +142,11 @@ export const translations = {
       ],
       experienceTitle: 'Berufserfahrung',
       experiences: [
-        { role: 'Full-Stack-Softwareentwickler (Werkstudent)', organization: 'EXOR PRO GmbH', detail: 'Feature-Entwicklung mit Angular (TypeScript) und .NET (C#), Verbesserung bestehender Systeme und agile Teamarbeit.' },
-        { role: 'Softwareentwickler — Datenvisualisierung (Werkstudent)', organization: 'Bertrandt AG', detail: 'Python-Werkzeuge zur automatisierten Datenvisualisierung, darunter interaktive Diagramme und Dashboards.' },
-        { role: 'Softwareentwickler — Chatbot & Automatisierung (Wissenschaftliche Hilfskraft)', organization: 'Institut Mobiles Dialogsystem, OvGU Magdeburg', detail: 'Chatbot-System mit Python/Flask, eine Vue.js-Oberfläche und Deployment-Pipelines für containerisierte Anwendungen.' },
-        { role: 'ML-Entwicklung — Fahrzeugerkennung (Wissenschaftliche Hilfskraft)', organization: 'AuRa-Hirn-Projekt, OvGU Magdeburg', detail: 'Implementierung und Training neuronaler Netze mit Python zur Objekt- und Fußgängererkennung sowie Tests und Integration in ROS2.' },
-        { role: 'Softwareentwickler Robotik (Praktikant)', organization: 'DOLD Mechatronik GmbH', detail: 'Modellierung inverser Kinematik für eine CNC-Portalfräsmaschine und Entwicklung einer Steuerungsoberfläche mit Python und PyQt.' },
+        { role: 'Full-Stack-Softwareentwickler (Werkstudent)', organization: 'EXOR PRO GmbH', period: 'Seit März 2024', detail: 'Feature-Entwicklung mit Angular (TypeScript) und .NET (C#), Verbesserung bestehender Systeme und agile Teamarbeit.' },
+        { role: 'Softwareentwickler — Datenvisualisierung (Werkstudent)', organization: 'Bertrandt AG', period: 'Februar 2023 – Februar 2024', detail: 'Python-Werkzeuge zur automatisierten Datenvisualisierung, darunter interaktive Diagramme und Dashboards.' },
+        { role: 'Softwareentwickler — Chatbot & Automatisierung (Wissenschaftliche Hilfskraft)', organization: 'Institut Mobiles Dialogsystem, OvGU Magdeburg', period: 'September 2023 – Januar 2024', detail: 'Chatbot-System mit Python/Flask, eine Vue.js-Oberfläche und Deployment-Pipelines für containerisierte Anwendungen.' },
+        { role: 'ML-Entwicklung — Fahrzeugerkennung (Wissenschaftliche Hilfskraft)', organization: 'AuRa-Hirn-Projekt, OvGU Magdeburg', period: 'März 2023 – August 2023', detail: 'Implementierung und Training neuronaler Netze mit Python zur Objekt- und Fußgängererkennung sowie Tests und Integration in ROS2.' },
+        { role: 'Softwareentwickler Robotik (Praktikant)', organization: 'DOLD Mechatronik GmbH', period: 'November 2021 – April 2022', detail: 'Modellierung inverser Kinematik für eine CNC-Portalfräsmaschine und Entwicklung einer Steuerungsoberfläche mit Python und PyQt.' },
       ],
       educationTitle: 'Ausbildung',
       education: [

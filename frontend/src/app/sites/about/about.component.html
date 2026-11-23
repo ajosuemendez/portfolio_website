@@ -3,8 +3,8 @@
 
   <nav class="about-tabs" [attr.aria-label]="aboutCopy.tabListLabel">
     <a href="#about-section-intro" [class.is-active]="activeTab === 'intro'" [attr.aria-current]="activeTab === 'intro' ? 'location' : null" (click)="scrollToSection($event, 'intro')">{{ aboutCopy.tabs.intro }}</a>
-    <a href="#about-section-capabilities" [class.is-active]="activeTab === 'capabilities'" [attr.aria-current]="activeTab === 'capabilities' ? 'location' : null" (click)="scrollToSection($event, 'capabilities')">{{ aboutCopy.tabs.capabilities }}</a>
     <a href="#about-section-experience" [class.is-active]="activeTab === 'experience'" [attr.aria-current]="activeTab === 'experience' ? 'location' : null" (click)="scrollToSection($event, 'experience')">{{ aboutCopy.tabs.experience }}</a>
+    <a href="#about-section-capabilities" [class.is-active]="activeTab === 'capabilities'" [attr.aria-current]="activeTab === 'capabilities' ? 'location' : null" (click)="scrollToSection($event, 'capabilities')">{{ aboutCopy.tabs.capabilities }}</a>
     <a href="#about-section-education" [class.is-active]="activeTab === 'education'" [attr.aria-current]="activeTab === 'education' ? 'location' : null" (click)="scrollToSection($event, 'education')">{{ aboutCopy.tabs.education }}</a>
   </nav>
 
@@ -23,9 +23,27 @@
       </div>
     </section>
 
-    <section id="about-section-capabilities" class="about-section-panel capabilities-section" data-about-section="capabilities" aria-labelledby="capabilities-title">
+    <section id="about-section-experience" class="about-section-panel experience-section" data-about-section="experience" aria-labelledby="experience-title">
       <div class="section-heading">
         <span class="section-index">02</span>
+        <h2 id="experience-title">{{ aboutCopy.experienceTitle }}</h2>
+      </div>
+      <div class="experience-list">
+        <article class="experience-item" *ngFor="let experience of aboutCopy.experiences; let i = index" [class.is-left]="i % 2 === 0" [class.is-right]="i % 2 !== 0">
+          <div class="experience-copy">
+            <p class="experience-period">{{ experience.period }}</p>
+            <h3>{{ experience.role }}</h3>
+            <p class="experience-organization">{{ experience.organization }}</p>
+            <p class="experience-detail">{{ experience.detail }}</p>
+          </div>
+          <span class="experience-marker" aria-hidden="true"></span>
+        </article>
+      </div>
+    </section>
+
+    <section id="about-section-capabilities" class="about-section-panel capabilities-section" data-about-section="capabilities" aria-labelledby="capabilities-title">
+      <div class="section-heading">
+        <span class="section-index">03</span>
         <h2 id="capabilities-title">{{ aboutCopy.capabilityTitle }}</h2>
       </div>
       <dl class="capability-list">
@@ -34,23 +52,6 @@
           <dd>{{ capability.value }}</dd>
         </div>
       </dl>
-    </section>
-
-    <section id="about-section-experience" class="about-section-panel experience-section" data-about-section="experience" aria-labelledby="experience-title">
-      <div class="section-heading">
-        <span class="section-index">03</span>
-        <h2 id="experience-title">{{ aboutCopy.experienceTitle }}</h2>
-      </div>
-      <div class="experience-list">
-        <article class="experience-item" *ngFor="let experience of aboutCopy.experiences; let i = index">
-          <span class="experience-index">0{{ i + 1 }}</span>
-          <div>
-            <h3>{{ experience.role }}</h3>
-            <p class="experience-organization">{{ experience.organization }}</p>
-            <p class="experience-detail">{{ experience.detail }}</p>
-          </div>
-        </article>
-      </div>
     </section>
 
     <section id="about-section-education" class="about-section-panel education-section" data-about-section="education" aria-labelledby="education-title">

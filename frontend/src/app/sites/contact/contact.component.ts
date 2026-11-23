@@ -12,7 +12,7 @@ import { LanguageService } from '../../services/language.service';
 })
 export class ContactComponent implements OnInit, OnDestroy {
   contactCopy: any = translations.en.contact;
-  readonly email = 'alejandro.mendez@st.ovgu.de';
+  readonly email = 'ajosuemendez@gmail.com';
   readonly linkedinUrl = 'https://www.linkedin.com/in/alejandro-josue-mendez-lopez-a526a321b/';
   copyState: 'copied' | 'unavailable' | null = null;
 

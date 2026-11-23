@@ -42,7 +42,7 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly socialLinks = {
     linkedin: 'https://www.linkedin.com/in/alejandro-josue-mendez-lopez-a526a321b/',
     github: 'https://github.com/ajosuemendez',
-    email: 'alejandro.mendez@st.ovgu.de',
+    email: 'ajosuemendez@gmail.com',
   };
 
   get orbitNavItems(): Array<{
