@@ -197,7 +197,7 @@ a:focus-visible {
 
 @media (min-width: 900px) {
   :root {
-    --desktop-nav-width: 280px;
+    --desktop-nav-width: 300px;
     --desktop-shell-offset: max(0px, calc((100vw - var(--page-width)) / 2));
   }
 

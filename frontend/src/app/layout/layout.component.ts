@@ -22,6 +22,8 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   currentRoute = '/';
   orbitActiveIndex = 0;
   wrapRoutePaths: string[] = [];
+  private orbitWheelDelta = 0;
+  private orbitWheelLocked = false;
 
   readonly navItems: { path: string; label: keyof typeof translations.en.navLabels }[] = [
     { path: '/', label: 'home' },
@@ -45,10 +47,11 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     distance: number;
     isCurrent: boolean;
     isWrapping: boolean;
+    hoverRotation: number;
   }> {
-    const centerX = 40;
+    const centerX = 20;
     const centerY = 240;
-    const radiusX = 170;
+    const radiusX = 190;
     const radiusY = 230;
 
     return this.navItems.map((item, index) => {
@@ -57,6 +60,7 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
         ? relativeIndex - this.navItems.length
         : relativeIndex;
       const angle = (slot * 45 * Math.PI) / 180;
+      const hoverRotation = slot === -2 ? -15 : slot === -1 ? -10 : slot === 1 ? 10 : slot === 2 ? 15 : 0;
       return {
         ...item,
         left: centerX + radiusX * Math.cos(angle),
@@ -64,6 +68,7 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
         distance: Math.abs(slot),
         isCurrent: index === this.orbitActiveIndex,
         isWrapping: this.wrapRoutePaths.includes(item.path),
+        hoverRotation,
       };
     });
   }
@@ -84,6 +89,7 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   private languageSubscription?: Subscription;
   private routerSubscription?: Subscription;
   private wrapCleanupTimer?: ReturnType<typeof setTimeout>;
+  private orbitWheelTimer?: ReturnType<typeof setTimeout>;
 
   constructor(private languageService: LanguageService, private router: Router) {}
 
@@ -119,6 +125,10 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.wrapCleanupTimer) {
       clearTimeout(this.wrapCleanupTimer);
       this.wrapCleanupTimer = undefined;
+    }
+    if (this.orbitWheelTimer) {
+      clearTimeout(this.orbitWheelTimer);
+      this.orbitWheelTimer = undefined;
     }
   }
 
@@ -156,6 +166,37 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     return relativeIndex > this.navItems.length / 2
       ? relativeIndex - this.navItems.length
       : relativeIndex;
+  }
+
+  onOrbitWheel(event: WheelEvent): void {
+    const delta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+    if (delta === 0) {
+      return;
+    }
+
+    event.preventDefault();
+    if (this.orbitWheelLocked) {
+      return;
+    }
+
+    this.orbitWheelDelta += delta;
+    if (Math.abs(this.orbitWheelDelta) < 40) {
+      return;
+    }
+
+    const direction = Math.sign(this.orbitWheelDelta);
+    this.orbitWheelDelta = 0;
+    const nextIndex = (this.orbitActiveIndex + direction + this.navItems.length) % this.navItems.length;
+    if (nextIndex === this.orbitActiveIndex) {
+      return;
+    }
+
+    this.orbitWheelLocked = true;
+    this.orbitWheelTimer = setTimeout(() => {
+      this.orbitWheelLocked = false;
+      this.orbitWheelTimer = undefined;
+    }, 720);
+    this.router.navigate([this.navItems[nextIndex].path]);
   }
 
   get isMoreRoute(): boolean {

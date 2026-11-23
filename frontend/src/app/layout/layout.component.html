@@ -21,7 +21,7 @@
         >{{ navLabels[item.label] }}</a>
       </nav>
 
-      <nav class="desktop-orbit-navigation" [attr.aria-label]="uiText.navigation">
+      <nav class="desktop-orbit-navigation" [attr.aria-label]="uiText.navigation" (wheel)="onOrbitWheel($event)">
         <div class="orbit-wheel">
           <div
             *ngFor="let item of orbitNavItems; trackBy: trackByNavPath"
@@ -40,7 +40,9 @@
               ariaCurrentWhenActive="page"
               (click)="closeMenu()"
             >
-              <span class="orbit-nav-label">{{ navLabels[item.label] }}</span>
+              <span class="orbit-nav-label" [style.--hover-rotation]="item.hoverRotation + 'deg'">
+                {{ navLabels[item.label] }}
+              </span>
             </a>
           </div>
         </div>

@@ -446,7 +446,7 @@
     position: absolute;
     top: 50%;
     left: 0;
-    width: 280px;
+    width: 300px;
     height: 480px;
     margin-top: -240px;
   }
@@ -492,7 +492,7 @@
     font-weight: 600;
     white-space: nowrap;
     text-align: left;
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
     transform-origin: left center;
     transition: color 220ms ease, transform 420ms cubic-bezier(0.2, 0.75, 0.25, 1), font-size 220ms ease;
   }
@@ -530,7 +530,7 @@
   .orbit-nav-link:hover .orbit-nav-label,
   .orbit-nav-link:focus-visible .orbit-nav-label {
     color: var(--color-accent);
-    transform: scale(1.08);
+    transform: scale(1.08) rotate(var(--hover-rotation, 0deg));
   }
 
   .orbit-nav-link:not(.is-current):hover .orbit-nav-label,
