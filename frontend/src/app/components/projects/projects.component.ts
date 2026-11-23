@@ -4,11 +4,12 @@ import { Subscription } from 'rxjs';
 import { translations } from '../../../translations/translations';
 import { LanguageService } from '../../services/language.service';
 import { CardComponent } from '../card/card.component';
+import { FenceDividerComponent } from '../fence-divider/fence-divider.component';
 
 @Component({
   selector: 'projects',
   standalone: true,
-  imports: [CommonModule, CardComponent],
+  imports: [CommonModule, CardComponent, FenceDividerComponent],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css'],
 })

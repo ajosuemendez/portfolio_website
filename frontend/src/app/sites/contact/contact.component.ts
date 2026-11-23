@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { translations } from '../../../translations/translations';
 import { LanguageService } from '../../services/language.service';
@@ -7,17 +6,18 @@ import { LanguageService } from '../../services/language.service';
 @Component({
   selector: 'contact',
   standalone: true,
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent implements OnInit, OnDestroy {
   contactCopy: any = translations.en.contact;
   readonly email = 'alejandro.mendez@st.ovgu.de';
-  readonly phone = '+49 1745953985';
-  readonly phoneHref = '+491745953985';
+  readonly linkedinUrl = 'https://www.linkedin.com/in/alejandro-josue-mendez-lopez-a526a321b/';
+  copyState: 'copied' | 'unavailable' | null = null;
 
   private languageSubscription?: Subscription;
+  private copyTimer?: ReturnType<typeof setTimeout>;
 
   constructor(private languageService: LanguageService) {}
 
@@ -29,5 +29,38 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.languageSubscription?.unsubscribe();
+    if (this.copyTimer) {
+      clearTimeout(this.copyTimer);
+    }
+  }
+
+  get copyFeedback(): string {
+    if (this.copyState === 'copied') {
+      return this.contactCopy.copiedMessage;
+    }
+    if (this.copyState === 'unavailable') {
+      return this.contactCopy.copyFallbackMessage;
+    }
+    return '';
+  }
+
+  async copyEmail(): Promise<void> {
+    try {
+      if (!navigator.clipboard?.writeText) {
+        throw new Error('Clipboard unavailable');
+      }
+      await navigator.clipboard.writeText(this.email);
+      this.copyState = 'copied';
+    } catch {
+      this.copyState = 'unavailable';
+    }
+
+    if (this.copyTimer) {
+      clearTimeout(this.copyTimer);
+    }
+    this.copyTimer = setTimeout(() => {
+      this.copyState = null;
+      this.copyTimer = undefined;
+    }, 2600);
   }
 }
