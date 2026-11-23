@@ -1,22 +1,47 @@
 <div class="cv-page page-shell">
-  <header class="cv-heading">
-    <div>
-      <p class="eyebrow">{{ cvCopy.eyebrow }}</p>
-      <h1 class="page-title">{{ cvCopy.title }}</h1>
-      <p class="page-lede">{{ cvCopy.intro }}</p>
+  <div class="cv-heading">
+    <h1 class="cv-title">{{ cvCopy.title }}</h1>
+    <div class="cv-actions">
+      <a href="assets/cvs/Lebenslauf_Alejandro_Mendez.pdf" download class="action-link download-btn">
+        {{ downloadText }} <span aria-hidden="true">↓</span>
+      </a>
     </div>
-    <a href="assets/cvs/Lebenslauf_Alejandro_Mendez.pdf" download class="action-link download-btn">
-      {{ downloadText }} <span aria-hidden="true">↓</span>
-    </a>
-  </header>
-  <div class="pdf-frame">
-    <pdf-viewer
-      [src]="pdfSrc"
-      [render-text]="true"
-      [original-size]="false"
-      [zoom]="1"
-      class="pdf-container"
-      [attr.aria-label]="cvCopy.title"
-    ></pdf-viewer>
   </div>
+  <div class="pdf-frame">
+    <div class="pdf-page-stage">
+      <div
+        class="pdf-page-sheet"
+        [class.page-turn-next-out]="pageTurnPhase === 'out' && pageTurnDirection === 'next'"
+        [class.page-turn-previous-out]="pageTurnPhase === 'out' && pageTurnDirection === 'previous'"
+        [class.page-turn-next-in]="pageTurnPhase === 'in' && pageTurnDirection === 'next'"
+        [class.page-turn-previous-in]="pageTurnPhase === 'in' && pageTurnDirection === 'previous'"
+      >
+        <pdf-viewer
+          [src]="pdfSrc"
+          [page]="currentPage"
+          [show-all]="false"
+          [render-text]="true"
+          [original-size]="false"
+          [fit-to-page]="true"
+          [zoom]="1"
+          (after-load-complete)="onPdfLoad($event)"
+          class="pdf-container"
+          [attr.aria-label]="cvCopy.title"
+        ></pdf-viewer>
+      </div>
+    </div>
+  </div>
+  <nav class="cv-pagination" [attr.aria-label]="uiText.cvPagination">
+    <button type="button" [attr.aria-label]="uiText.previousPage" [disabled]="isPageChanging || currentPage <= 1" (click)="previousPage()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5m7 7-7-7 7-7" />
+      </svg>
+    </button>
+    <span class="cv-page-count">{{ currentPage }} / {{ totalPages || '—' }}</span>
+    <button type="button" [attr.aria-label]="uiText.nextPage" [disabled]="isPageChanging || !totalPages || currentPage >= totalPages" (click)="nextPage()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14m-7-7 7 7-7 7" />
+      </svg>
+    </button>
+  </nav>
 </div>

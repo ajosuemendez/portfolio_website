@@ -47,9 +47,7 @@ export const translations = {
       linkedinCta: 'View LinkedIn profile',
     },
     cv: {
-      eyebrow: 'Curriculum vitae',
-      title: 'The full picture.',
-      intro: 'The original CV is provided below, with a direct download available.',
+      title: 'Curriculum Vitae',
     },
     projectsIntro: 'Selected projects, shown with their original descriptions and project imagery.',
     uiText: {
@@ -71,6 +69,9 @@ export const translations = {
       projectImage: 'Project preview',
       externalLink: 'Opens the project website in a new tab',
       skipToContent: 'Skip to content',
+      cvPagination: 'CV page navigation',
+      previousPage: 'Previous page',
+      nextPage: 'Next page',
     },
     navLabels: {
       home: 'Home',
@@ -143,9 +144,7 @@ export const translations = {
       linkedinCta: 'LinkedIn-Profil ansehen',
     },
     cv: {
-      eyebrow: 'Lebenslauf',
-      title: 'Der vollständige Überblick.',
-      intro: 'Der originale Lebenslauf ist hier eingebunden und kann direkt heruntergeladen werden.',
+      title: 'Lebenslauf',
     },
     projectsIntro: 'Ausgewählte Projekte mit den ursprünglichen Beschreibungen und Projektbildern.',
     uiText: {
@@ -167,6 +166,9 @@ export const translations = {
       projectImage: 'Projektvorschau',
       externalLink: 'Öffnet die Projektseite in einem neuen Tab',
       skipToContent: 'Zum Inhalt springen',
+      cvPagination: 'Lebenslauf-Seitennavigation',
+      previousPage: 'Vorherige Seite',
+      nextPage: 'Nächste Seite',
     },
     navLabels: {
       home: 'Start',

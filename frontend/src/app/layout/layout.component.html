@@ -191,7 +191,7 @@
     </div>
   </header>
 
-  <main #contentArea class="app-content" id="main-content" tabindex="-1">
+  <main #contentArea class="app-content" [class.cv-route]="currentRoute.startsWith('/cv')" id="main-content" tabindex="-1">
     <router-outlet></router-outlet>
   </main>
 

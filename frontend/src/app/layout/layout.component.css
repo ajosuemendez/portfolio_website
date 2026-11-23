@@ -234,6 +234,10 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.app-content.cv-route {
+  overflow-y: hidden;
+}
+
 @media (max-width: 1020px) {
   .header-inner {
     gap: 0.7rem;
