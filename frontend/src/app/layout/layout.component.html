@@ -120,14 +120,13 @@
         <a
           *ngFor="let item of navItems"
           class="nav-link"
-          [class.nav-cv]="item.path === '/cv'"
           [class.nav-work]="item.path === '/work'"
           [routerLink]="item.path"
           routerLinkActive="is-active"
           [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : { exact: false }"
           ariaCurrentWhenActive="page"
           (click)="closeMenu()"
-        >{{ navLabels[item.label] }}</a>
+        ><span class="nav-link-label">{{ navLabels[item.label] }}</span></a>
       </nav>
 
       <nav class="desktop-orbit-navigation" [attr.aria-label]="uiText.navigation" (wheel)="onOrbitWheel($event)">

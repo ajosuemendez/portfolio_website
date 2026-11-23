@@ -227,3 +227,10 @@ a:focus-visible {
     padding-right: var(--page-gutter);
   }
 }
+
+@media (min-width: 900px) and (max-width: 1320px) {
+  :root {
+    --desktop-nav-width: clamp(250px, 23vw, 300px);
+    --desktop-nav-gap: clamp(1.25rem, 2.5vw, 2rem);
+  }
+}
