@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { translations } from '../../../translations/translations';
 import { LanguageService } from '../../services/language.service';
@@ -13,8 +13,6 @@ import { CardComponent } from '../card/card.component';
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
-  @Input() variant: 'home' | 'work' = 'home';
-
   projects: any[] = [];
   selectedLang: 'en' | 'de' = 'en';
 
@@ -23,21 +21,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   constructor(private languageService: LanguageService) {}
 
   get title(): string {
-    return this.variant === 'work'
-      ? translations[this.selectedLang].workTitle
-      : translations[this.selectedLang].projectsTitle;
-  }
-
-  get description(): string {
-    return this.variant === 'work'
-      ? translations[this.selectedLang].workIntro
-      : translations[this.selectedLang].projectsIntro;
-  }
-
-  get eyebrow(): string {
-    return this.variant === 'work'
-      ? translations[this.selectedLang].workEyebrow
-      : translations[this.selectedLang].projectsEyebrow;
+    return translations[this.selectedLang].workTitle;
   }
 
   ngOnInit(): void {

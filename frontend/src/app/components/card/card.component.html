@@ -1,27 +1,28 @@
-<article class="project-card" [style.--card-order]="index">
-  <div class="card-heading">
+<article class="project-card" [class.project-reverse]="index % 2 === 1" [style.--card-order]="index">
+  <header class="project-heading">
     <span class="project-number mono-label">0{{ index + 1 }}</span>
-    <h3 class="project-title">{{ project.title }}</h3>
-    <span *ngIf="project.link" class="project-arrow" aria-hidden="true">↗</span>
-  </div>
+    <h2 class="project-title">{{ project.title }}</h2>
+  </header>
 
-  <div class="project-image-wrapper">
-    <a
-      *ngIf="project.link; else imageOnly"
-      class="image-link"
-      [href]="project.link"
-      target="_blank"
-      rel="noopener noreferrer"
-      [attr.aria-label]="project.title + ' — ' + visitSiteText + '. ' + externalLinkLabel"
-    >
-      <img class="project-image" [src]="project.imagePath" [alt]="project.title + ' — ' + imageLabel" loading="lazy" />
-      <span class="image-link-mark" aria-hidden="true">↗</span>
-    </a>
-    <ng-template #imageOnly>
-      <div class="image-link">
+  <div class="project-media">
+    <div class="project-image-wrapper">
+      <a
+        *ngIf="project.link; else imageOnly"
+        class="image-link"
+        [href]="project.link"
+        target="_blank"
+        rel="noopener noreferrer"
+        [attr.aria-label]="project.title + ' — ' + visitSiteText + '. ' + externalLinkLabel"
+      >
         <img class="project-image" [src]="project.imagePath" [alt]="project.title + ' — ' + imageLabel" loading="lazy" />
-      </div>
-    </ng-template>
+        <span class="image-link-mark" aria-hidden="true">↗</span>
+      </a>
+      <ng-template #imageOnly>
+        <div class="image-link">
+          <img class="project-image" [src]="project.imagePath" [alt]="project.title + ' — ' + imageLabel" loading="lazy" />
+        </div>
+      </ng-template>
+    </div>
   </div>
 
   <div class="project-information">

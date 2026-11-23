@@ -1,17 +1,21 @@
-<section class="projects-section page-shell" [class.archive-mode]="variant === 'work'" aria-labelledby="projects-title">
-  <header class="projects-heading">
-    <div class="projects-heading-copy">
-      <p class="eyebrow">{{ eyebrow }}</p>
-      <h1 *ngIf="variant === 'work'; else sectionTitle" id="projects-title" class="section-heading">{{ title }}</h1>
-      <ng-template #sectionTitle>
-        <h2 id="projects-title" class="section-heading">{{ title }}</h2>
-      </ng-template>
-      <p class="section-intro">{{ description }}</p>
-    </div>
-    <span class="project-total mono-label"><span aria-hidden="true">[</span> {{ projects.length }} <span aria-hidden="true">]</span></span>
+<section class="projects-section page-shell" aria-labelledby="projects-title">
+  <header class="work-heading">
+    <h1 id="projects-title" class="section-heading">{{ title }}</h1>
   </header>
-
-  <div class="projects-grid">
-    <card *ngFor="let project of projects; let i = index" [project]="project" [index]="i"></card>
+  <div class="projects-list">
+    <ng-container *ngFor="let project of projects; let i = index">
+      <card [project]="project" [index]="i"></card>
+      <div *ngIf="i < projects.length - 1" class="project-separator" aria-hidden="true">
+        <svg viewBox="0 0 120 44" focusable="false">
+          <g shape-rendering="crispEdges">
+            <path d="M13 9h5v28h-5zM102 9h5v28h-5zM18 12h84v4H18zM18 30h84v4H18z" class="separator-rails" />
+            <path d="m23 28 9-10h8l-9 10zm22 0 9-10h8l-9 10zm22 0 9-10h8l-9 10zm22 0 9-10h8l-9 10z" class="separator-slats-blue" />
+            <path d="m34 28 9-10h8l-9 10zm22 0 9-10h8l-9 10zm22 0 9-10h8l-9 10z" class="separator-slats-koi" />
+            <rect x="8" y="37" width="15" height="3" class="separator-foot" />
+            <rect x="97" y="37" width="15" height="3" class="separator-foot" />
+          </g>
+        </svg>
+      </div>
+    </ng-container>
   </div>
 </section>

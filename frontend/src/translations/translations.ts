@@ -1,7 +1,7 @@
 export const translations = {
   en: {
     projectsTitle: 'Selected work',
-    workTitle: 'Project archive',
+    workTitle: 'Projects',
     projectsEyebrow: 'Selected work / 01',
     workEyebrow: 'Work / 01',
     workIntro: 'A closer look at the projects currently represented in this portfolio.',
@@ -97,7 +97,7 @@ export const translations = {
   },
   de: {
     projectsTitle: 'Ausgewählte Arbeiten',
-    workTitle: 'Projektübersicht',
+    workTitle: 'Projekte',
     projectsEyebrow: 'Ausgewählte Arbeiten / 01',
     workEyebrow: 'Arbeiten / 01',
     workIntro: 'Ein genauerer Blick auf die Projekte, die derzeit in diesem Portfolio vorgestellt werden.',

@@ -1,81 +1,64 @@
 .projects-section {
-  padding-block: clamp(4rem, 8vw, 7rem);
+  padding-top: clamp(2.25rem, 4vw, 3.5rem);
+  padding-bottom: clamp(3rem, 6vw, 6rem);
 }
 
-.projects-heading {
+.work-heading {
+  margin-bottom: clamp(1rem, 2.4vw, 2rem);
+}
+
+.work-heading .section-heading {
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+}
+
+.projects-list {
   display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: clamp(2rem, 4vw, 3.6rem);
+  flex-direction: column;
 }
 
-.projects-heading-copy {
-  max-width: 48rem;
-}
-
-.projects-heading .eyebrow {
-  margin: 0 0 1rem;
-}
-
-.project-total {
-  flex: 0 0 auto;
-  padding-bottom: 0.35rem;
-  color: var(--color-secondary);
-  font-size: 0.72rem;
-}
-
-.project-total span {
-  color: var(--color-accent);
-}
-
-.projects-grid {
-  display: grid;
-  align-items: stretch;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: clamp(1.5rem, 3vw, 3rem) clamp(1rem, 2.5vw, 2.5rem);
-}
-
-.projects-grid card {
+.projects-list card {
   display: block;
   min-width: 0;
-  grid-column: span 5;
+  width: 100%;
 }
 
-.projects-grid card:first-child {
-  grid-column: span 7;
+.project-separator {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  margin-block: 0.35rem;
+  color: var(--color-accent);
+  opacity: 0.46;
+  transition: opacity 220ms ease;
 }
 
-.archive-mode .projects-grid card:first-child,
-.archive-mode .projects-grid card:nth-child(2) {
-  grid-column: span 6;
+.project-separator svg {
+  display: block;
+  width: 94px;
+  height: 36px;
+  overflow: visible;
+  shape-rendering: crispEdges;
 }
 
-@media (max-width: 700px) {
-  .projects-heading {
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .project-total {
-    padding-top: 0.25rem;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 2.6rem;
-  }
-
-  .projects-grid card,
-  .projects-grid card:first-child,
-  .archive-mode .projects-grid card:first-child,
-  .archive-mode .projects-grid card:nth-child(2) {
-    grid-column: auto;
-  }
+.separator-rails,
+.separator-foot {
+  fill: currentColor;
+  opacity: 0.72;
 }
 
-@media (max-width: 380px) {
-  .projects-heading {
-    flex-direction: column;
+.separator-slats-blue {
+  fill: var(--color-accent);
+  opacity: 0.62;
+}
+
+.separator-slats-koi {
+  fill: var(--color-koi);
+  opacity: 0.88;
+}
+
+@media (hover: hover) {
+  .projects-list:hover .project-separator {
+    opacity: 0.7;
   }
 }
