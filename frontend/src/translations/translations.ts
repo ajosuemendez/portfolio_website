@@ -13,9 +13,19 @@ export const translations = {
       cvCta: 'View the CV',
     },
     about: {
-      eyebrow: 'Profile / capabilities',
-      title: 'A practical, end-to-end view of software.',
-      intro: 'The experience and tools below are drawn from the CV and project material included in this portfolio.',
+      title: 'About me',
+      tabListLabel: 'About sections',
+      tabs: {
+        intro: 'Introduction',
+        capabilities: 'Capabilities',
+        experience: 'Experience',
+        education: 'Education',
+      },
+      introLabel: 'A little about me',
+      introHeadline: 'I build useful software, from interface to implementation.',
+      intro: 'I’m Alejandro, a full-stack software developer with a background in computer science and mechatronics. I enjoy turning complex problems into clear, reliable applications, and moving between front-end experiences, APIs, and data-focused tools.',
+      introFocusLabel: 'Areas of focus',
+      introFocus: ['Web applications', 'Automation', 'Data visualization'],
       capabilityTitle: 'Technologies & tools',
       capabilities: [
         { label: 'Languages', value: 'Python, TypeScript, C#, JavaScript' },
@@ -23,7 +33,7 @@ export const translations = {
         { label: 'Data & interfaces', value: 'REST APIs, MongoDB, MySQL' },
         { label: 'Languages spoken', value: 'German (C1), English (C1), Spanish (native), French (B2)' },
       ],
-      experienceTitle: 'Experience listed in the CV',
+      experienceTitle: 'Experience',
       experiences: [
         { role: 'Full-stack Software Developer (working student)', organization: 'EXOR PRO GmbH', detail: 'Feature development with Angular (TypeScript) and .NET (C#); improving existing systems and collaborating in an agile team.' },
         { role: 'Software Developer — Data Visualization (working student)', organization: 'Bertrandt AG', detail: 'Python tooling for automated data visualization, including interactive charts and dashboards.' },
@@ -110,9 +120,19 @@ export const translations = {
       cvCta: 'Lebenslauf ansehen',
     },
     about: {
-      eyebrow: 'Profil / Kompetenzen',
-      title: 'Software ganzheitlich und praxisnah betrachten.',
-      intro: 'Die folgenden Erfahrungen und Werkzeuge stammen aus dem Lebenslauf und den Projektinformationen dieses Portfolios.',
+      title: 'Über mich',
+      tabListLabel: 'Über-mich-Bereiche',
+      tabs: {
+        intro: 'Einführung',
+        capabilities: 'Kompetenzen',
+        experience: 'Berufserfahrung',
+        education: 'Ausbildung',
+      },
+      introLabel: 'Ein paar Worte zu mir',
+      introHeadline: 'Ich entwickle praktische Software – vom Interface bis zur Umsetzung.',
+      intro: 'Ich bin Alejandro, Full-Stack-Softwareentwickler mit einem Hintergrund in Informatik und Mechatronik. Ich entwickle gern aus komplexen Anforderungen klare, zuverlässige Anwendungen und arbeite dabei sowohl an Benutzeroberflächen als auch an APIs und datenorientierten Werkzeugen.',
+      introFocusLabel: 'Schwerpunkte',
+      introFocus: ['Webanwendungen', 'Automatisierung', 'Datenvisualisierung'],
       capabilityTitle: 'Technologien & Werkzeuge',
       capabilities: [
         { label: 'Programmiersprachen', value: 'Python, TypeScript, C#, JavaScript' },
@@ -120,7 +140,7 @@ export const translations = {
         { label: 'Daten & Schnittstellen', value: 'REST-APIs, MongoDB, MySQL' },
         { label: 'Sprachen', value: 'Deutsch (C1), Englisch (C1), Spanisch (Muttersprache), Französisch (B2)' },
       ],
-      experienceTitle: 'Im Lebenslauf aufgeführte Erfahrung',
+      experienceTitle: 'Berufserfahrung',
       experiences: [
         { role: 'Full-Stack-Softwareentwickler (Werkstudent)', organization: 'EXOR PRO GmbH', detail: 'Feature-Entwicklung mit Angular (TypeScript) und .NET (C#), Verbesserung bestehender Systeme und agile Teamarbeit.' },
         { role: 'Softwareentwickler — Datenvisualisierung (Werkstudent)', organization: 'Bertrandt AG', detail: 'Python-Werkzeuge zur automatisierten Datenvisualisierung, darunter interaktive Diagramme und Dashboards.' },
