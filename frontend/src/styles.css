@@ -197,12 +197,13 @@ a:focus-visible {
 
 @media (min-width: 900px) {
   :root {
-    --desktop-nav-width: 300px;
+    --desktop-nav-width: 320px;
+    --desktop-nav-gap: clamp(1.25rem, 2.5vw, 2rem);
     --desktop-shell-offset: max(0px, calc((100vw - var(--page-width)) / 2));
   }
 
   .page-shell {
-    padding-left: calc(var(--page-gutter) + var(--desktop-nav-width));
+    padding-left: calc(var(--page-gutter) + var(--desktop-nav-width) + var(--desktop-nav-gap));
     padding-right: var(--page-gutter);
   }
 }

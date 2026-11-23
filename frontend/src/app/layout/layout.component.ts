@@ -39,6 +39,12 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     { path: '/cv', label: 'cv' },
   ];
 
+  readonly socialLinks = {
+    linkedin: 'https://www.linkedin.com/in/alejandro-josue-mendez-lopez-a526a321b/',
+    github: 'https://github.com/ajosuemendez',
+    email: 'alejandro.mendez@st.ovgu.de',
+  };
+
   get orbitNavItems(): Array<{
     path: string;
     label: keyof typeof translations.en.navLabels;
@@ -49,7 +55,7 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     isWrapping: boolean;
     hoverRotation: number;
   }> {
-    const centerX = 20;
+    const centerX = 40;
     const centerY = 240;
     const radiusX = 190;
     const radiusY = 230;

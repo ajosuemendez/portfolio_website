@@ -1,15 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { translations } from '../../../translations/translations';
-import { ProjectsComponent } from '../../components/projects/projects.component';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'home',
   standalone: true,
-  imports: [CommonModule, RouterLink, ProjectsComponent],
+  imports: [RouterLink],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
