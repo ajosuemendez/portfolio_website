@@ -25,6 +25,8 @@
   --dark-semi-transparent: rgba(22, 34, 58, 0.78);
   --page-width: 1320px;
   --page-gutter: clamp(1.15rem, 5vw, 5.25rem);
+  --page-title-top: clamp(1rem, 2.4vw, 2rem);
+  --page-title-size: clamp(2rem, 4vw, 3.4rem);
   --font-display: 'Manrope', 'Open Sans Local', sans-serif;
   --font-body: 'Open Sans Local', 'Manrope', sans-serif;
   --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
@@ -133,6 +135,16 @@ a:focus-visible {
   line-height: 1.08;
 }
 
+.page-title {
+  margin: 0;
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-size: var(--page-title-size);
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 1;
+}
+
 .section-intro {
   max-width: 42rem;
   margin: 1rem 0 0;
@@ -194,6 +206,12 @@ a:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --page-title-size: clamp(1.9rem, 8vw, 2.7rem);
   }
 }
 

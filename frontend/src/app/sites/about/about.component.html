@@ -1,5 +1,5 @@
 <div class="about-page page-shell">
-  <h1 class="about-title">{{ aboutCopy.title }}</h1>
+  <h1 class="page-title about-title">{{ aboutCopy.title }}</h1>
 
   <nav class="about-tabs" [attr.aria-label]="aboutCopy.tabListLabel">
     <a href="#about-section-intro" [class.is-active]="activeTab === 'intro'" [attr.aria-current]="activeTab === 'intro' ? 'location' : null" (click)="scrollToSection($event, 'intro')">{{ aboutCopy.tabs.intro }}</a>

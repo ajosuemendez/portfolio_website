@@ -13,18 +13,12 @@
   flex-direction: column;
   overflow: hidden;
   margin-inline: auto;
-  padding: clamp(1rem, 2.4vw, 2rem) var(--page-gutter) clamp(0.5rem, 1vw, 1rem);
+  padding: var(--page-title-top) var(--page-gutter) clamp(0.5rem, 1vw, 1rem);
 }
 
 .about-title {
   flex: 0 0 auto;
   margin: 0 0 clamp(1rem, 2vw, 1.6rem);
-  color: var(--color-primary);
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  font-weight: 500;
-  letter-spacing: -0.075em;
-  line-height: 1;
 }
 
 .about-tabs {
@@ -302,10 +296,6 @@
 }
 
 @media (max-width: 560px) {
-  .about-title {
-    font-size: clamp(1.9rem, 9vw, 2.7rem);
-  }
-
   .about-tabs {
     gap: 1.3rem;
   }
