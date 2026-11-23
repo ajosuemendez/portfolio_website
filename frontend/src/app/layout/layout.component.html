@@ -26,8 +26,7 @@
           <div
             *ngFor="let item of orbitNavItems; trackBy: trackByNavPath"
             class="orbit-node"
-            [class.wrap-top-to-bottom]="item.wrapDirection === 'top-to-bottom'"
-            [class.wrap-bottom-to-top]="item.wrapDirection === 'bottom-to-top'"
+            [class.is-wrapping]="item.isWrapping"
             [style.left.px]="item.left"
             [style.top.px]="item.top"
           >

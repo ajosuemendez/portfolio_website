@@ -21,9 +21,7 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   mobileMoreOpen = false;
   currentRoute = '/';
   orbitActiveIndex = 0;
-  private orbitTargetIndex = 0;
-  wrapRoutePath: string | null = null;
-  wrapDirection: 'top-to-bottom' | 'bottom-to-top' | null = null;
+  wrapRoutePaths: string[] = [];
 
   readonly navItems: { path: string; label: keyof typeof translations.en.navLabels }[] = [
     { path: '/', label: 'home' },
@@ -46,11 +44,12 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     top: number;
     distance: number;
     isCurrent: boolean;
-    wrapDirection: 'top-to-bottom' | 'bottom-to-top' | null;
+    isWrapping: boolean;
   }> {
-    const centerX = 0;
+    const centerX = 40;
     const centerY = 240;
-    const radius = 230;
+    const radiusX = 170;
+    const radiusY = 230;
 
     return this.navItems.map((item, index) => {
       const relativeIndex = (index - this.orbitActiveIndex + this.navItems.length) % this.navItems.length;
@@ -60,11 +59,11 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       const angle = (slot * 45 * Math.PI) / 180;
       return {
         ...item,
-        left: centerX + radius * Math.cos(angle),
-        top: centerY + radius * Math.sin(angle),
+        left: centerX + radiusX * Math.cos(angle),
+        top: centerY + radiusY * Math.sin(angle),
         distance: Math.abs(slot),
         isCurrent: index === this.orbitActiveIndex,
-        wrapDirection: item.path === this.wrapRoutePath ? this.wrapDirection : null,
+        isWrapping: this.wrapRoutePaths.includes(item.path),
       };
     });
   }
@@ -84,14 +83,13 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private languageSubscription?: Subscription;
   private routerSubscription?: Subscription;
-  private orbitStepTimer?: ReturnType<typeof setTimeout>;
+  private wrapCleanupTimer?: ReturnType<typeof setTimeout>;
 
   constructor(private languageService: LanguageService, private router: Router) {}
 
   ngOnInit(): void {
     this.currentRoute = this.router.url;
     this.orbitActiveIndex = Math.max(0, this.activeRouteIndex);
-    this.orbitTargetIndex = this.orbitActiveIndex;
     this.languageSubscription = this.languageService.language$.subscribe((lang) => {
       this.selectedLang = lang;
       document.documentElement.lang = lang;
@@ -118,69 +116,46 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.languageSubscription?.unsubscribe();
     this.routerSubscription?.unsubscribe();
-    if (this.orbitStepTimer) {
-      clearTimeout(this.orbitStepTimer);
+    if (this.wrapCleanupTimer) {
+      clearTimeout(this.wrapCleanupTimer);
+      this.wrapCleanupTimer = undefined;
     }
-  }
-
-  finishOrbitStep(): void {
-    this.wrapRoutePath = null;
-    this.wrapDirection = null;
   }
 
   private animateOrbitTo(targetIndex: number): void {
-    if (targetIndex < 0) {
+    if (targetIndex < 0 || targetIndex === this.orbitActiveIndex) {
       return;
     }
 
-    this.orbitTargetIndex = targetIndex;
-    if (!this.orbitStepTimer) {
-      this.advanceOrbitStep();
+    if (this.wrapCleanupTimer) {
+      clearTimeout(this.wrapCleanupTimer);
+      this.wrapCleanupTimer = undefined;
+    }
+
+    const previousIndex = this.orbitActiveIndex;
+    const wrappingPaths = this.navItems
+      .filter((_, index) => Math.abs(
+        this.getOrbitSlot(index, targetIndex) - this.getOrbitSlot(index, previousIndex)
+      ) > 2)
+      .map((item) => item.path);
+
+    this.orbitActiveIndex = targetIndex;
+    this.wrapRoutePaths = wrappingPaths;
+
+    if (wrappingPaths.length > 0) {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      this.wrapCleanupTimer = setTimeout(() => {
+        this.wrapRoutePaths = [];
+        this.wrapCleanupTimer = undefined;
+      }, reduceMotion ? 0 : 720);
     }
   }
 
-  private advanceOrbitStep(): void {
-    const targetIndex = this.orbitTargetIndex;
-    if (targetIndex === this.orbitActiveIndex) {
-      this.orbitStepTimer = undefined;
-      return;
-    }
-
-    const stepCount = this.navItems.length;
-    const stepsForward = (targetIndex - this.orbitActiveIndex + stepCount) % stepCount;
-    const direction = stepsForward <= Math.floor(stepCount / 2) ? 1 : -1;
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const advance = () => {
-      if (this.orbitActiveIndex === targetIndex) {
-        this.orbitStepTimer = undefined;
-        return;
-      }
-
-      const previousIndex = this.orbitActiveIndex;
-      const wrappingIndex = direction === 1
-        ? (previousIndex - 2 + stepCount) % stepCount
-        : (previousIndex + 2) % stepCount;
-
-      this.wrapRoutePath = this.navItems[wrappingIndex].path;
-      this.wrapDirection = direction === 1 ? 'top-to-bottom' : 'bottom-to-top';
-      this.orbitActiveIndex = (previousIndex + direction + stepCount) % stepCount;
-
-      this.orbitStepTimer = setTimeout(() => {
-        this.finishOrbitStep();
-        this.orbitStepTimer = undefined;
-        if (this.orbitActiveIndex !== this.orbitTargetIndex) {
-          this.orbitStepTimer = setTimeout(() => {
-            this.orbitStepTimer = undefined;
-            this.advanceOrbitStep();
-          }, reduceMotion ? 0 : 90);
-        } else {
-          this.orbitStepTimer = undefined;
-        }
-      }, reduceMotion ? 0 : 720);
-    };
-
-    advance();
+  private getOrbitSlot(routeIndex: number, activeIndex: number): number {
+    const relativeIndex = (routeIndex - activeIndex + this.navItems.length) % this.navItems.length;
+    return relativeIndex > this.navItems.length / 2
+      ? relativeIndex - this.navItems.length
+      : relativeIndex;
   }
 
   get isMoreRoute(): boolean {
