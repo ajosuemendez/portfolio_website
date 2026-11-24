@@ -78,6 +78,14 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.navItems.findIndex((item) => item.path === routePath);
   }
 
+  get mobileActiveIndex(): number {
+    return Math.max(0, this.activeRouteIndex);
+  }
+
+  get mobileActiveTransform(): string {
+    return `translateX(${this.mobileActiveIndex * 100}%)`;
+  }
+
   private getRoutePath(route: string): string {
     return route.split(/[?#]/, 1)[0].replace(/\/+$/, '') || '/';
   }

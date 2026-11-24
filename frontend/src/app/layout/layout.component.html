@@ -250,6 +250,7 @@
 
   <div class="mobile-nav-dock" (keydown.escape)="closeMenu()">
     <nav class="mobile-bottom-nav" [attr.aria-label]="uiText.mobileNavigation">
+      <span class="mobile-nav-active-indicator" [style.transform]="mobileActiveTransform" aria-hidden="true"></span>
       <a
         *ngFor="let item of navItems"
         class="mobile-nav-item"
