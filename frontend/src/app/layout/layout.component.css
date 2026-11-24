@@ -66,16 +66,11 @@
 }
 
 .brand-mark {
-  display: grid;
+  display: block;
   width: 2.55rem;
   height: 2.55rem;
-  place-items: center;
-  border: 1px solid var(--color-border-strong);
-  color: var(--color-accent);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: -0.08em;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 
 .brand-name {
@@ -677,10 +672,8 @@
   }
 
   .brand-mark {
-    width: 3.3rem;
-    height: 3.3rem;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.42);
+    width: 3rem;
+    height: 3rem;
   }
 
   .brand-name {
