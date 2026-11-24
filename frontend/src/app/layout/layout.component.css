@@ -274,6 +274,10 @@
     pointer-events: auto;
   }
 
+  .mobile-menu-container.is-open .mobile-menu-toggle {
+    display: none;
+  }
+
   .menu-bar {
     position: absolute;
     top: 50%;
@@ -305,21 +309,47 @@
   .mobile-menu-panel {
     position: absolute;
     z-index: 1;
+    isolation: isolate;
     top: 50%;
     left: 50%;
-    width: min(38rem, calc(100vw - var(--page-gutter) - var(--page-gutter)));
+    width: min(30rem, calc(100vw - 3.5rem));
+    max-height: calc(100vh - 2rem);
+    max-height: calc(100dvh - 2rem);
+    overflow: visible;
+    transform: translate(-50%, -50%);
+    animation: mobile-menu-enter 180ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  }
+
+  .mobile-menu-panel::before {
+    position: absolute;
+    z-index: 1;
+    inset: -5px;
+    background:
+      linear-gradient(var(--color-accent), var(--color-accent)) left top / 26px 4px no-repeat,
+      linear-gradient(var(--color-accent), var(--color-accent)) left top / 4px 26px no-repeat,
+      linear-gradient(var(--color-koi), var(--color-koi)) right top / 26px 4px no-repeat,
+      linear-gradient(var(--color-koi), var(--color-koi)) right top / 4px 26px no-repeat,
+      linear-gradient(var(--color-koi), var(--color-koi)) left bottom / 26px 4px no-repeat,
+      linear-gradient(var(--color-koi), var(--color-koi)) left bottom / 4px 26px no-repeat,
+      linear-gradient(var(--color-accent), var(--color-accent)) right bottom / 26px 4px no-repeat,
+      linear-gradient(var(--color-accent), var(--color-accent)) right bottom / 4px 26px no-repeat;
+    content: '';
+    pointer-events: none;
+  }
+
+  .mobile-menu-content {
+    position: relative;
+    z-index: 2;
     max-height: calc(100vh - 2rem);
     max-height: calc(100dvh - 2rem);
     overflow-y: auto;
     border: 1px solid var(--color-border);
-    border-radius: 20px;
-    padding: clamp(1.25rem, 5vw, 2rem);
+    border-radius: 2px;
+    padding: clamp(0.85rem, 3.5vw, 1.25rem);
     background: rgba(255, 255, 255, 0.97);
     box-shadow: 0 16px 40px rgba(25, 39, 72, 0.18);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-    transform: translate(-50%, -50%);
-    animation: mobile-menu-enter 180ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
   }
 
   .mobile-menu-panel[hidden] {
@@ -350,34 +380,70 @@
     to { opacity: 1; }
   }
 
+  .mobile-menu-header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+  }
+
   .mobile-menu-heading {
-    margin-bottom: 0.75rem;
+    margin: 0;
     color: var(--color-primary);
     font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+    font-weight: 500;
+    letter-spacing: -0.07em;
+    line-height: 1;
+  }
+
+  .mobile-menu-close {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid var(--color-border-strong);
+    border-radius: 2px;
+    color: var(--color-primary);
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .mobile-menu-close svg {
+    width: 22px;
+    height: 22px;
   }
 
   .mobile-menu-language {
-    display: flex;
-    gap: 0.5rem;
-    padding-bottom: 0.8rem;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+    padding-bottom: 0.9rem;
   }
 
   .mobile-menu-language button {
-    display: inline-flex;
-    min-height: 38px;
+    display: flex;
+    min-width: 0;
+    min-height: 48px;
     align-items: center;
-    gap: 0.4rem;
+    justify-content: center;
+    gap: 0.55rem;
     border: 1px solid var(--color-border);
-    border-radius: 9px;
-    padding: 0 0.65rem;
+    border-radius: 2px;
+    padding: 0.65rem;
     color: var(--color-secondary);
     background: transparent;
     cursor: pointer;
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.8rem;
     font-weight: 700;
+    transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease;
   }
 
   .mobile-menu-language button.is-selected {
@@ -387,51 +453,77 @@
   }
 
   .mobile-menu-language img {
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
+    width: 24px;
+    height: 16px;
+    border: 1px solid rgba(22, 34, 58, 0.12);
     object-fit: cover;
   }
 
   .mobile-menu-social {
+    position: relative;
+    z-index: 2;
     display: grid;
-    gap: 0.1rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid var(--color-border);
+    gap: 0.45rem;
+    margin-top: 0;
+    padding-top: 0.8rem;
+    border-top: 3px dashed rgba(63, 95, 215, 0.28);
   }
 
   .mobile-menu-social a {
     display: flex;
-    min-height: 42px;
+    min-height: 50px;
     align-items: center;
     justify-content: space-between;
-    gap: 0.75rem;
-    color: var(--color-secondary);
-    font-size: 0.8rem;
+    gap: 0.65rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: 2px;
+    padding: 0.55rem 0.7rem;
+    color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.72);
+    font-size: clamp(0.88rem, 4vw, 1rem);
     font-weight: 600;
     text-decoration: none;
+    transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
   }
 
-  .mobile-menu-link-icon,
-  .mobile-menu-send-icon {
-    display: block;
-    width: 18px;
-    height: 18px;
-    flex: 0 0 auto;
+  .mobile-menu-social a.mobile-menu-send-link {
+    border-color: var(--color-accent);
+    color: #fff;
+    background: var(--color-accent);
   }
 
   .mobile-menu-link-label {
     flex: 1 1 auto;
   }
 
-  .mobile-menu-external,
-  .mobile-menu-send-icon {
+  .mobile-menu-external {
     color: var(--color-accent);
+    font-size: 1.45rem;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .mobile-menu-send-icon {
+    display: block;
+    width: 22px;
+    height: 22px;
+    flex: 0 0 auto;
+    color: #fff;
   }
 
   .mobile-menu-social a:hover,
   .mobile-menu-social a:focus-visible {
     color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: rgba(63, 95, 215, 0.05);
+    transform: translateY(-1px);
+  }
+
+  .mobile-menu-social a.mobile-menu-send-link:hover,
+  .mobile-menu-social a.mobile-menu-send-link:focus-visible {
+    border-color: var(--color-primary);
+    color: #fff;
+    background: var(--color-primary);
   }
 
   .mobile-nav-dock {
