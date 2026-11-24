@@ -3,6 +3,11 @@
     <h1 class="page-title">{{ contactCopy.title }}</h1>
   </header>
 
+  <p class="mobile-contact-intro">{{ contactCopy.intro }}</p>
+  <div class="mobile-contact-availability">
+    <span aria-hidden="true"></span>{{ contactCopy.availability }}
+  </div>
+
   <section class="contact-methods" [attr.aria-label]="contactCopy.title">
     <div class="contact-method email-method reveal-in">
       <a class="contact-method-main" [href]="'mailto:' + email">
@@ -11,13 +16,20 @@
       </a>
       <div class="copy-area">
         <button class="copy-button" type="button" (click)="copyEmail()" [attr.aria-label]="contactCopy.copyCta">
+          <span>{{ contactCopy.copyCta }}</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="8" y="8" width="12" height="13" rx="2" />
             <path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2" />
           </svg>
-          <span>{{ contactCopy.copyCta }}</span>
         </button>
       </div>
+      <a class="mobile-send-link" [href]="'mailto:' + email">
+        <span>{{ contactCopy.sendEmailCta }}</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="m4 7 8 6 8-6" />
+        </svg>
+      </a>
     </div>
 
     <a class="contact-method linkedin-method reveal-in" [href]="linkedinUrl" target="_blank" rel="noopener noreferrer">
@@ -25,9 +37,36 @@
         <span class="method-label mono-label">{{ contactCopy.linkedinLabel }}</span>
         <span class="contact-value">{{ contactCopy.linkedinCta }}</span>
       </span>
-      <span class="contact-arrow" aria-hidden="true">↗</span>
+      <span class="contact-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 18 18 6M8 6h10v10" />
+        </svg>
+      </span>
     </a>
   </section>
+
+  <div class="mobile-contact-art" aria-hidden="true">
+    <svg viewBox="0 0 360 72" focusable="false">
+      <path class="contact-art-guide" d="M2 61H358" />
+      <path class="contact-art-building" d="M8 61V48h6v-6h5v-7h15v7h5v6h7v13z" />
+      <path class="contact-art-building" d="M101 61V29h8v-8h8v-8h21v8h8v8h7v33z" />
+      <path class="contact-art-building" d="M258 61V48h6v-6h6v-6h17v6h6v6h7v13z" />
+      <path class="contact-art-building" d="M321 61V51h7v-6h13v6h8v10z" />
+      <path class="contact-art-tree" d="M62 53v-6h4v-6h4v-5h8v5h4v6h4v6zM174 54v-5h4v-6h4v-5h8v5h4v6h4v5z" />
+      <path class="contact-art-tree-trunk" d="M70 53v8m5-8v8m107-7v7m5-7v7" />
+      <path class="contact-art-lamp" d="M224 61V39m-5 0h10l-2-5h-6z" />
+      <path class="contact-art-lamp-light" d="M220 31h8l-2-3h-4z" />
+      <rect class="contact-art-window" x="19" y="45" width="4" height="5" />
+      <rect class="contact-art-window is-lit" x="33" y="45" width="4" height="5" />
+      <rect class="contact-art-window" x="115" y="25" width="5" height="6" />
+      <rect class="contact-art-window is-lit" x="132" y="25" width="5" height="6" />
+      <rect class="contact-art-window is-lit" x="115" y="39" width="5" height="6" />
+      <rect class="contact-art-window" x="132" y="39" width="5" height="6" />
+      <rect class="contact-art-window" x="273" y="43" width="5" height="6" />
+      <rect class="contact-art-window is-lit" x="280" y="43" width="5" height="6" />
+      <rect class="contact-art-window is-lit" x="329" y="51" width="5" height="5" />
+    </svg>
+  </div>
 
   <div class="copy-toast" [class.is-visible]="copyState !== null" role="status" aria-live="polite">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

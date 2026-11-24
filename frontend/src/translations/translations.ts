@@ -49,7 +49,10 @@ export const translations = {
     },
     contact: {
       title: 'Contact',
+      intro: 'Have a project, an opportunity or a question? I’d be glad to hear from you.',
+      availability: 'Available for new projects',
       emailLabel: 'Email',
+      sendEmailCta: 'Send email',
       copyCta: 'Copy email',
       copiedMessage: 'Email copied to clipboard.',
       copyFallbackMessage: 'Clipboard unavailable. Select and copy the address above.',
@@ -157,7 +160,10 @@ export const translations = {
     },
     contact: {
       title: 'Kontakt',
+      intro: 'Du hast ein Projekt, eine Gelegenheit oder eine Frage? Ich freue mich, von dir zu hören.',
+      availability: 'Verfügbar für neue Projekte',
       emailLabel: 'E-Mail',
+      sendEmailCta: 'E-Mail senden',
       copyCta: 'E-Mail kopieren',
       copiedMessage: 'E-Mail in die Zwischenablage kopiert.',
       copyFallbackMessage: 'Zwischenablage nicht verfügbar. Adresse oben auswählen und kopieren.',

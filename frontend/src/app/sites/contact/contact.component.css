@@ -17,6 +17,13 @@
   animation-delay: 120ms;
 }
 
+.mobile-contact-intro,
+.mobile-contact-availability,
+.mobile-send-link,
+.mobile-contact-art {
+  display: none;
+}
+
 .email-method {
   animation-delay: 260ms;
 }
@@ -119,6 +126,12 @@
   transition: opacity 180ms ease, transform 220ms ease, color 180ms ease, background-color 180ms ease, visibility 0s linear 180ms;
 }
 
+.contact-arrow svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
 .linkedin-method:hover .contact-arrow,
 .linkedin-method:focus-visible .contact-arrow {
   color: #fff;
@@ -198,6 +211,274 @@
     grid-row: 1;
     width: 2rem;
     height: 2rem;
+  }
+
+  .copy-toast {
+    bottom: calc(6rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 760px) {
+  .contact-page {
+    align-items: stretch;
+    padding-top: var(--page-title-top);
+    padding-bottom: 1.25rem;
+  }
+
+  .contact-heading {
+    margin-bottom: 0.85rem;
+  }
+
+  .mobile-contact-intro {
+    display: block;
+    margin: 0 0 1.1rem;
+    color: var(--color-secondary);
+    font-size: clamp(1rem, 4.5vw, 1.15rem);
+    line-height: 1.65;
+  }
+
+  .mobile-contact-availability {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.65rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    padding: 0.55rem 0.8rem;
+    color: var(--color-secondary);
+    background: rgba(255, 255, 255, 0.68);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+  }
+
+  .mobile-contact-availability span {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 auto;
+    background: #5b9870;
+  }
+
+  .contact-methods {
+    display: grid;
+    width: 100%;
+    gap: 0.9rem;
+  }
+
+  .contact-method {
+    min-height: 0;
+    border: 1px solid var(--color-border-strong);
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 8px 24px rgba(22, 34, 58, 0.045);
+  }
+
+  .email-method {
+    position: relative;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.9rem;
+    overflow: visible;
+    padding: 1.25rem;
+  }
+
+  .email-method::before {
+    position: absolute;
+    z-index: 1;
+    inset: -4px;
+    background:
+      linear-gradient(var(--color-accent), var(--color-accent)) left top / 20px 3px no-repeat,
+      linear-gradient(var(--color-accent), var(--color-accent)) left top / 3px 20px no-repeat,
+      linear-gradient(var(--color-koi), var(--color-koi)) right top / 14px 3px no-repeat,
+      linear-gradient(var(--color-koi), var(--color-koi)) right top / 3px 14px no-repeat,
+      linear-gradient(var(--color-koi), var(--color-koi)) left bottom / 14px 3px no-repeat,
+      linear-gradient(var(--color-koi), var(--color-koi)) left bottom / 3px 14px no-repeat,
+      linear-gradient(var(--color-accent), var(--color-accent)) right bottom / 20px 3px no-repeat,
+      linear-gradient(var(--color-accent), var(--color-accent)) right bottom / 3px 20px no-repeat;
+    content: '';
+    pointer-events: none;
+  }
+
+  .email-method .contact-method-main,
+  .email-method .copy-area,
+  .email-method .mobile-send-link {
+    position: relative;
+    z-index: 2;
+    grid-column: 1;
+  }
+
+  .email-method .contact-method-main {
+    grid-row: 1;
+    gap: 0.55rem;
+  }
+
+  .email-method .mobile-send-link {
+    grid-row: 2;
+  }
+
+  .email-method .copy-area {
+    grid-row: 3;
+    justify-items: stretch;
+    margin-top: 0;
+  }
+
+  .email-method .contact-value {
+    font-size: clamp(0.82rem, 4.3vw, 1.1rem);
+    letter-spacing: -0.035em;
+    white-space: nowrap;
+    overflow-wrap: normal;
+  }
+
+  .copy-button {
+    width: 100%;
+    height: 52px;
+    min-height: 52px;
+    justify-content: space-between;
+    padding-inline: 0.85rem;
+    padding-block: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .copy-button svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .mobile-send-link {
+    display: flex;
+    height: 52px;
+    min-height: 52px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 2px;
+    padding: 0 0.85rem;
+    color: #fff;
+    background: var(--color-accent);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+  }
+
+  .mobile-send-link:hover,
+  .mobile-send-link:focus-visible {
+    border-color: var(--color-primary);
+    color: #fff;
+    background: var(--color-primary);
+    transform: translateY(-1px);
+  }
+
+  .mobile-send-link svg {
+    width: 21px;
+    height: 21px;
+    flex: 0 0 auto;
+  }
+
+  .linkedin-method {
+    grid-template-columns: minmax(0, 1fr) 2.5rem;
+    min-height: 86px;
+    padding: 1rem;
+  }
+
+  .linkedin-method .contact-method-main {
+    gap: 0.3rem;
+  }
+
+  .linkedin-method .contact-value {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .contact-arrow {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: end;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 0;
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+  }
+
+  .contact-arrow svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .linkedin-method:hover .contact-arrow,
+  .linkedin-method:focus-visible .contact-arrow {
+    color: var(--color-accent);
+    background: transparent;
+    transform: none;
+  }
+
+  .mobile-contact-art {
+    display: block;
+    width: 100%;
+    height: clamp(3rem, 11vw, 4rem);
+    margin: clamp(1.2rem, 5vw, 2rem) auto 0.5rem;
+    opacity: 0.82;
+  }
+
+  .mobile-contact-art svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .contact-art-guide {
+    fill: none;
+    stroke: rgba(63, 95, 215, 0.25);
+    stroke-dasharray: 2 6;
+    stroke-width: 1;
+  }
+
+  .contact-art-building {
+    fill: rgba(63, 95, 215, 0.055);
+    stroke: rgba(63, 95, 215, 0.34);
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+  }
+
+  .contact-art-tree {
+    fill: rgba(102, 137, 117, 0.54);
+    stroke: rgba(78, 111, 90, 0.68);
+    stroke-width: 0.8;
+    shape-rendering: crispEdges;
+  }
+
+  .contact-art-tree-trunk {
+    fill: none;
+    stroke: rgba(22, 34, 58, 0.55);
+    stroke-width: 1.5;
+  }
+
+  .contact-art-lamp {
+    fill: rgba(63, 95, 215, 0.12);
+    stroke: rgba(22, 34, 58, 0.6);
+    stroke-linejoin: round;
+    stroke-width: 1;
+  }
+
+  .contact-art-lamp-light {
+    fill: rgba(217, 111, 53, 0.68);
+  }
+
+  .contact-art-window {
+    fill: rgba(63, 95, 215, 0.42);
+    shape-rendering: crispEdges;
+  }
+
+  .contact-art-window.is-lit {
+    fill: var(--color-koi);
   }
 
   .copy-toast {

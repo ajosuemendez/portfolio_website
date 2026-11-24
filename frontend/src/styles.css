@@ -211,7 +211,7 @@ a:focus-visible {
 
 @media (max-width: 760px) {
   :root {
-    --page-title-size: clamp(1.5rem, 5vw, 2.2rem);
+    --page-title-size: clamp(1.75rem, 7.8vw, 2.3rem);
   }
 }
 
