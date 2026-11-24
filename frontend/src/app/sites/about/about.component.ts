@@ -37,6 +37,7 @@ export class AboutComponent implements OnInit, OnDestroy {
 
   selectTab(tab: 'intro' | 'capabilities' | 'experience' | 'education'): void {
     this.activeTab = tab;
+    this.centerActiveTab(tab);
   }
 
   scrollToSection(event: Event, tab: 'intro' | 'capabilities' | 'experience' | 'education'): void {
@@ -53,6 +54,24 @@ export class AboutComponent implements OnInit, OnDestroy {
     panel.scrollTo({ top, behavior: 'smooth' });
   }
 
+  private centerActiveTab(tab: 'intro' | 'capabilities' | 'experience' | 'education'): void {
+    const tabBar = document.getElementById('about-tabs');
+    const tabLink = document.getElementById(`about-tab-${tab}`);
+    if (!tabBar || !tabLink) {
+      return;
+    }
+
+    const tabBarRect = tabBar.getBoundingClientRect();
+    const tabLinkRect = tabLink.getBoundingClientRect();
+    const cue = tabBar.querySelector<HTMLElement>('.about-tabs-overflow-cue');
+    const cueWidth = cue?.getBoundingClientRect().width ?? 0;
+    const usableWidth = tabBar.clientWidth - cueWidth;
+    const left = tabBar.scrollLeft + tabLinkRect.left - tabBarRect.left - (usableWidth - tabLinkRect.width) / 2;
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+
+    tabBar.scrollTo({ left, behavior });
+  }
+
   onPanelScroll(event: Event): void {
     const panel = event.currentTarget as HTMLElement;
     const activationLine = panel.getBoundingClientRect().top + Math.min(150, panel.clientHeight * 0.3);
@@ -65,6 +84,8 @@ export class AboutComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.selectTab(activeTab);
+    if (this.activeTab !== activeTab) {
+      this.selectTab(activeTab);
+    }
   }
 }

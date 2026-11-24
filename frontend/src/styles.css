@@ -209,9 +209,9 @@ a:focus-visible {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 760px) {
   :root {
-    --page-title-size: clamp(1.9rem, 8vw, 2.7rem);
+    --page-title-size: clamp(1.5rem, 5vw, 2.2rem);
   }
 }
 

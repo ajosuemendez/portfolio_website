@@ -18,7 +18,7 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   selectedLang: 'en' | 'de' = 'en';
   navLabels: Record<keyof typeof translations.en.navLabels, string> = translations.en.navLabels;
   uiText: Record<keyof typeof translations.en.uiText, string> = translations.en.uiText;
-  mobileMoreOpen = false;
+  mobileMenuOpen = false;
   currentRoute = '/';
   orbitActiveIndex = 0;
   wrapRoutePaths: string[] = [];
@@ -29,12 +29,6 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     { path: '/', label: 'home' },
     { path: '/me', label: 'me' },
     { path: '/work', label: 'work' },
-    { path: '/email', label: 'email' },
-    { path: '/cv', label: 'cv' },
-  ];
-
-  readonly moreItems: { path: string; label: keyof typeof translations.en.navLabels }[] = [
-    { path: '/me', label: 'me' },
     { path: '/email', label: 'email' },
     { path: '/cv', label: 'cv' },
   ];
@@ -120,7 +114,7 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
         this.animateOrbitTo(nextIndex);
         this.currentRoute = event.urlAfterRedirects;
         this.contentArea.nativeElement.scrollTop = 0;
-        this.mobileMoreOpen = false;
+        this.mobileMenuOpen = false;
       }
     });
   }
@@ -205,21 +199,16 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.router.navigate([this.navItems[nextIndex].path]);
   }
 
-  get isMoreRoute(): boolean {
-    return this.currentRoute.startsWith('/me') ||
-      this.currentRoute.startsWith('/email') ||
-      this.currentRoute.startsWith('/cv');
-  }
-
-  toggleMoreMenu(): void {
-    this.mobileMoreOpen = !this.mobileMoreOpen;
+  toggleMobileMenu(): void {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 
   closeMenu(): void {
-    this.mobileMoreOpen = false;
+    this.mobileMenuOpen = false;
   }
 
   setLanguage(lang: 'en' | 'de'): void {
     this.languageService.setLanguage(lang);
+    this.closeMenu();
   }
 }

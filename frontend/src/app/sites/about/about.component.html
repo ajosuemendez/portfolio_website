@@ -1,11 +1,12 @@
 <div class="about-page page-shell">
   <h1 class="page-title about-title">{{ aboutCopy.title }}</h1>
 
-  <nav class="about-tabs" [attr.aria-label]="aboutCopy.tabListLabel">
-    <a href="#about-section-intro" [class.is-active]="activeTab === 'intro'" [attr.aria-current]="activeTab === 'intro' ? 'location' : null" (click)="scrollToSection($event, 'intro')">{{ aboutCopy.tabs.intro }}</a>
-    <a href="#about-section-experience" [class.is-active]="activeTab === 'experience'" [attr.aria-current]="activeTab === 'experience' ? 'location' : null" (click)="scrollToSection($event, 'experience')">{{ aboutCopy.tabs.experience }}</a>
-    <a href="#about-section-capabilities" [class.is-active]="activeTab === 'capabilities'" [attr.aria-current]="activeTab === 'capabilities' ? 'location' : null" (click)="scrollToSection($event, 'capabilities')">{{ aboutCopy.tabs.capabilities }}</a>
-    <a href="#about-section-education" [class.is-active]="activeTab === 'education'" [attr.aria-current]="activeTab === 'education' ? 'location' : null" (click)="scrollToSection($event, 'education')">{{ aboutCopy.tabs.education }}</a>
+  <nav id="about-tabs" class="about-tabs" [attr.aria-label]="aboutCopy.tabListLabel">
+    <a id="about-tab-intro" href="#about-section-intro" [class.is-active]="activeTab === 'intro'" [attr.aria-current]="activeTab === 'intro' ? 'location' : null" (click)="scrollToSection($event, 'intro')">{{ aboutCopy.tabs.intro }}</a>
+    <a id="about-tab-experience" href="#about-section-experience" [class.is-active]="activeTab === 'experience'" [attr.aria-current]="activeTab === 'experience' ? 'location' : null" (click)="scrollToSection($event, 'experience')">{{ aboutCopy.tabs.experience }}</a>
+    <a id="about-tab-capabilities" href="#about-section-capabilities" [class.is-active]="activeTab === 'capabilities'" [attr.aria-current]="activeTab === 'capabilities' ? 'location' : null" (click)="scrollToSection($event, 'capabilities')">{{ aboutCopy.tabs.capabilities }}</a>
+    <a id="about-tab-education" href="#about-section-education" [class.is-active]="activeTab === 'education'" [attr.aria-current]="activeTab === 'education' ? 'location' : null" (click)="scrollToSection($event, 'education')">{{ aboutCopy.tabs.education }}</a>
+    <span class="about-tabs-overflow-cue" aria-hidden="true"></span>
   </nav>
 
   <div id="about-content" class="about-content" role="region" [attr.aria-label]="aboutCopy.title" tabindex="0" (scroll)="onPanelScroll($event)">

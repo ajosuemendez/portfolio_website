@@ -24,14 +24,20 @@
 .about-tabs {
   display: flex;
   flex: 0 0 auto;
+  min-width: 0;
   align-items: center;
   gap: clamp(1.1rem, 3.5vw, 3.2rem);
+  flex-wrap: nowrap;
   overflow-x: auto;
   margin-bottom: clamp(0.8rem, 1.8vw, 1.4rem);
   scrollbar-width: none;
 }
 
 .about-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.about-tabs-overflow-cue {
   display: none;
 }
 
@@ -393,6 +399,26 @@
   .experience-list,
   .education-list {
     row-gap: 1.5rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .about-tabs {
+    max-width: 100%;
+    gap: clamp(0.9rem, 4vw, 1.4rem);
+  }
+
+  .about-tabs-overflow-cue {
+    position: sticky;
+    right: 0;
+    z-index: 1;
+    display: block;
+    width: 2rem;
+    min-height: 2.5rem;
+    flex: 0 0 2rem;
+    margin-left: auto;
+    background: linear-gradient(90deg, rgba(245, 247, 252, 0), var(--color-bg) 62%);
+    pointer-events: none;
   }
 }
 

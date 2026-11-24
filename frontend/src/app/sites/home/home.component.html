@@ -68,13 +68,47 @@
       </h1>
       <p class="hero-statement reveal-in">{{ homeCopy.statement }}</p>
 
+      <div class="mobile-hero-art reveal-in" aria-hidden="true">
+        <svg viewBox="0 0 360 72" focusable="false">
+          <path class="mobile-art-guide" d="M2 61H358" />
+          <path class="mobile-art-building" d="M8 61V48h6v-6h5v-7h15v7h5v6h7v13z" />
+          <path class="mobile-art-building" d="M101 61V29h8v-8h8v-8h21v8h8v8h7v33z" />
+          <path class="mobile-art-building" d="M258 61V48h6v-6h6v-6h17v6h6v6h7v13z" />
+          <path class="mobile-art-building" d="M321 61V51h7v-6h13v6h8v10z" />
+          <path class="mobile-art-detail" d="M126 13V5m-3 4h6" />
+          <rect class="mobile-art-window" x="19" y="45" width="4" height="5" />
+          <rect class="mobile-art-window is-lit" x="33" y="45" width="4" height="5" />
+          <rect class="mobile-art-window" x="115" y="25" width="5" height="6" />
+          <rect class="mobile-art-window is-lit" x="132" y="25" width="5" height="6" />
+          <rect class="mobile-art-window is-lit" x="115" y="39" width="5" height="6" />
+          <rect class="mobile-art-window" x="132" y="39" width="5" height="6" />
+          <rect class="mobile-art-window" x="273" y="43" width="5" height="6" />
+          <rect class="mobile-art-window is-lit" x="280" y="43" width="5" height="6" />
+          <rect class="mobile-art-window is-lit" x="329" y="51" width="5" height="5" />
+          <path class="mobile-art-tree-canopy" d="M62 53v-6h4v-6h4v-5h8v5h4v6h4v6zM174 54v-5h4v-6h4v-5h8v5h4v6h4v5z" />
+          <path class="mobile-art-tree-trunk" d="M70 53v8m5-8v8m107-7v7m5-7v7" />
+          <path class="mobile-art-lamp" d="M224 61V39m-5 0h10l-2-5h-6z" />
+          <path class="mobile-art-lamp-light" d="M220 31h8l-2-3h-4z" />
+        </svg>
+      </div>
+
       <div class="hero-bottom-row reveal-in">
         <div class="hero-actions">
           <a class="action-link" routerLink="/work">
-            {{ homeCopy.workCta }} <span aria-hidden="true">↘</span>
+            {{ homeCopy.workCta }}
+            <span class="desktop-cta-arrow" aria-hidden="true">↘</span>
+            <svg class="mobile-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="6" width="18" height="14" rx="2" />
+              <path d="M8 6V4h8v2M3 11h18M10 11v2h4v-2" />
+            </svg>
           </a>
           <a class="text-link" routerLink="/cv">
-            {{ homeCopy.cvCta }} <span aria-hidden="true">↗</span>
+            {{ homeCopy.cvCta }}
+            <span class="desktop-cta-arrow" aria-hidden="true">↗</span>
+            <svg class="mobile-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 3h8l4 4v14H6z" />
+              <path d="M14 3v5h5M9 13h6M9 16h6" />
+            </svg>
           </a>
         </div>
       </div>

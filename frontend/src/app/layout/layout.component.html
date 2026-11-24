@@ -190,6 +190,60 @@
     </div>
   </header>
 
+  <div class="mobile-menu-container" [class.is-open]="mobileMenuOpen" (keydown.escape)="closeMenu()">
+    <button
+      class="mobile-menu-toggle"
+      type="button"
+      aria-controls="mobile-menu-panel"
+      [attr.aria-expanded]="mobileMenuOpen"
+      [attr.aria-label]="mobileMenuOpen ? uiText.closeMenu : uiText.openMenu"
+      [class.is-open]="mobileMenuOpen"
+      (click)="toggleMobileMenu()"
+    >
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+    </button>
+
+    <div class="mobile-menu-backdrop" [hidden]="!mobileMenuOpen" aria-hidden="true" (click)="closeMenu()"></div>
+    <div id="mobile-menu-panel" class="mobile-menu-panel" role="region" [hidden]="!mobileMenuOpen" [attr.aria-label]="uiText.mobileMenu">
+      <div class="mobile-menu-heading">{{ uiText.mobileMenu }}</div>
+      <div class="mobile-menu-language" role="group" [attr.aria-label]="uiText.language">
+        <button type="button" [class.is-selected]="selectedLang === 'en'" [attr.aria-pressed]="selectedLang === 'en'" (click)="setLanguage('en')">
+          <img src="assets/images/english-flag.png" alt="" /><span>EN</span>
+        </button>
+        <button type="button" [class.is-selected]="selectedLang === 'de'" [attr.aria-pressed]="selectedLang === 'de'" (click)="setLanguage('de')">
+          <img src="assets/images/german-flag.png" alt="" /><span>DE</span>
+        </button>
+      </div>
+      <nav class="mobile-menu-social" [attr.aria-label]="uiText.socialLinks">
+        <a [href]="socialLinks.linkedin" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">
+          <svg class="mobile-menu-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="4" /><path d="M7.5 10v6.5M7.5 7.3v.1M11 16.5v-3.2a2.35 2.35 0 0 1 4.7 0v3.2" />
+          </svg>
+          <span class="mobile-menu-link-label">{{ uiText.linkedinProfile }}</span>
+          <span class="mobile-menu-external" aria-hidden="true">↗</span>
+        </a>
+        <a [href]="socialLinks.github" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">
+          <svg class="mobile-menu-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 19.5c-4.1 1.2-4.1-2-5.7-2.4M13.6 21v-3.1a2.7 2.7 0 0 0-.75-2.1c2.5-.28 5.15-1.23 5.15-5.56a4.3 4.3 0 0 0-1.15-3 4 4 0 0 0-.11-2.97s-.94-.3-3.1 1.15a10.7 10.7 0 0 0-5.65 0C5.83 3.97 4.9 4.27 4.9 4.27a4 4 0 0 0-.11 2.97 4.3 4.3 0 0 0-1.15 3c0 4.32 2.64 5.28 5.15 5.56a2.7 2.7 0 0 0-.75 2.08V21" />
+          </svg>
+          <span class="mobile-menu-link-label">{{ uiText.githubProfile }}</span>
+          <span class="mobile-menu-external" aria-hidden="true">↗</span>
+        </a>
+        <a [href]="'mailto:' + socialLinks.email" (click)="closeMenu()">
+          <svg class="mobile-menu-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" />
+          </svg>
+          <span class="mobile-menu-link-label">{{ uiText.sendEmail }}</span>
+          <svg class="mobile-menu-send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 3 10 14" /><path d="m21 3-7 18-4-7-7-4 18-7Z" />
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </div>
+
   <main #contentArea class="app-content" [class.cv-route]="currentRoute.startsWith('/cv')" id="main-content" tabindex="-1">
     <router-outlet></router-outlet>
   </main>
@@ -197,52 +251,32 @@
   <div class="mobile-nav-dock" (keydown.escape)="closeMenu()">
     <nav class="mobile-bottom-nav" [attr.aria-label]="uiText.mobileNavigation">
       <a
+        *ngFor="let item of navItems"
         class="mobile-nav-item"
-        routerLink="/"
+        [routerLink]="item.path"
         routerLinkActive="is-active"
-        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : { exact: false }"
         ariaCurrentWhenActive="page"
         (click)="closeMenu()"
       >
-        <svg class="mobile-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="m3 10 9-7 9 7" /><path d="M5 9v11h14V9" /><path d="M9 20v-6h6v6" />
-        </svg>
-        <span>{{ navLabels.home }}</span>
-      </a>
-
-      <a
-        class="mobile-nav-item mobile-nav-work"
-        routerLink="/work"
-        routerLinkActive="is-active"
-        ariaCurrentWhenActive="page"
-        (click)="closeMenu()"
-      >
-        <svg class="mobile-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="3" y="5" width="18" height="15" rx="2" /><path d="M8 5V3h8v2M3 10h18M10 10v2h4v-2" />
-        </svg>
-        <span>{{ navLabels.work }}</span>
-        <i class="work-tab-spark" aria-hidden="true"></i>
-      </a>
-
-      <button
-        class="mobile-nav-item mobile-nav-more"
-        type="button"
-        aria-controls="mobile-more-menu"
-        [attr.aria-expanded]="mobileMoreOpen"
-        [attr.aria-label]="mobileMoreOpen ? uiText.closeMore : uiText.more"
-        [class.is-active]="isMoreRoute || mobileMoreOpen"
-        (click)="toggleMoreMenu()"
-      >
-        <svg class="mobile-nav-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <circle cx="5" cy="12" r="1.7" /><circle cx="12" cy="12" r="1.7" /><circle cx="19" cy="12" r="1.7" />
-        </svg>
-        <span>{{ uiText.more }}</span>
-      </button>
-    </nav>
-
-    <nav id="mobile-more-menu" class="mobile-more-menu" [hidden]="!mobileMoreOpen" [attr.aria-label]="uiText.navigation">
-      <a *ngFor="let item of moreItems" [routerLink]="item.path" routerLinkActive="is-active" (click)="closeMenu()">
-        {{ navLabels[item.label] }} <span aria-hidden="true">↗</span>
+        <span class="mobile-nav-icon" [ngSwitch]="item.label" aria-hidden="true">
+          <svg *ngSwitchCase="'home'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 10 9-7 9 7" /><path d="M5 9v11h14V9" /><path d="M9 20v-6h6v6" />
+          </svg>
+          <svg *ngSwitchCase="'me'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="3.5" /><path d="M5 20a7 7 0 0 1 14 0" />
+          </svg>
+          <svg *ngSwitchCase="'work'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="15" rx="2" /><path d="M8 5V3h8v2M3 10h18M10 10v2h4v-2" />
+          </svg>
+          <svg *ngSwitchCase="'email'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" />
+          </svg>
+          <svg *ngSwitchCase="'cv'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3h8l4 4v14H6z" /><path d="M14 3v5h5M9 13h6M9 16h6" />
+          </svg>
+        </span>
+        <span>{{ navLabels[item.label] }}</span>
       </a>
     </nav>
   </div>
