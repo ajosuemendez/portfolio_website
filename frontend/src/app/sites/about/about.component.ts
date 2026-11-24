@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { translations } from '../../../translations/translations';
 import { LanguageService } from '../../services/language.service';
@@ -11,7 +11,9 @@ import { LanguageService } from '../../services/language.service';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
 })
-export class AboutComponent implements OnInit, OnDestroy {
+export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('aboutContent') private aboutContent?: ElementRef<HTMLElement>;
+
   aboutCopy: any = translations.en.about;
   activeTab: 'intro' | 'capabilities' | 'experience' | 'education' = 'intro';
 
@@ -22,6 +24,9 @@ export class AboutComponent implements OnInit, OnDestroy {
     'education',
   ];
   private languageSubscription?: Subscription;
+  private revealObserver?: IntersectionObserver;
+  private revealMutationObserver?: MutationObserver;
+  private observedRevealTargets = new WeakSet<Element>();
 
   constructor(private languageService: LanguageService) {}
 
@@ -31,8 +36,56 @@ export class AboutComponent implements OnInit, OnDestroy {
     });
   }
 
+  ngAfterViewInit(): void {
+    const content = this.aboutContent?.nativeElement;
+    if (!content) {
+      return;
+    }
+
+    if (typeof IntersectionObserver === 'undefined') {
+      content.querySelectorAll('.scroll-reveal').forEach((element) => element.classList.add('is-in-view'));
+      return;
+    }
+
+    this.revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in-view');
+          this.revealObserver?.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: content,
+      threshold: 0.12,
+      rootMargin: '0px 0px -48px 0px',
+    });
+
+    this.observeRevealTargets();
+
+    if (typeof MutationObserver !== 'undefined') {
+      this.revealMutationObserver = new MutationObserver(() => this.observeRevealTargets());
+      this.revealMutationObserver.observe(content, { childList: true, subtree: true });
+    }
+  }
+
   ngOnDestroy(): void {
     this.languageSubscription?.unsubscribe();
+    this.revealObserver?.disconnect();
+    this.revealMutationObserver?.disconnect();
+  }
+
+  private observeRevealTargets(): void {
+    const content = this.aboutContent?.nativeElement;
+    if (!content || !this.revealObserver) {
+      return;
+    }
+
+    content.querySelectorAll('.scroll-reveal').forEach((element) => {
+      if (!this.observedRevealTargets.has(element)) {
+        this.observedRevealTargets.add(element);
+        this.revealObserver?.observe(element);
+      }
+    });
   }
 
   selectTab(tab: 'intro' | 'capabilities' | 'experience' | 'education'): void {

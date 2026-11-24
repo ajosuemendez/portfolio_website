@@ -19,6 +19,7 @@
 .about-title {
   flex: 0 0 auto;
   margin: 0 0 clamp(1rem, 2vw, 1.6rem);
+  animation-delay: 100ms;
 }
 
 .about-tabs {
@@ -31,6 +32,7 @@
   overflow-x: auto;
   margin-bottom: clamp(0.8rem, 1.8vw, 1.4rem);
   scrollbar-width: none;
+  animation-delay: 220ms;
 }
 
 .about-tabs::-webkit-scrollbar {
@@ -97,6 +99,7 @@
   scroll-behavior: smooth;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  animation-delay: 340ms;
 }
 
 .about-content::-webkit-scrollbar {
@@ -419,6 +422,25 @@
     margin-left: auto;
     background: linear-gradient(90deg, rgba(245, 247, 252, 0), var(--color-bg) 62%);
     pointer-events: none;
+  }
+}
+
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+  .about-content .scroll-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 560ms var(--ease-out), transform 560ms var(--ease-out);
+  }
+
+  .about-content .scroll-reveal.is-in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .experience-item:nth-child(even),
+  .capability-item:nth-child(even),
+  .education-item:nth-child(even) {
+    transition-delay: 80ms;
   }
 }
 

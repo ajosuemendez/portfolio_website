@@ -1,10 +1,10 @@
 <div class="contact-page page-shell">
-  <header class="contact-heading">
+  <header class="contact-heading reveal-in">
     <h1 class="page-title">{{ contactCopy.title }}</h1>
   </header>
 
   <section class="contact-methods" [attr.aria-label]="contactCopy.title">
-    <div class="contact-method email-method">
+    <div class="contact-method email-method reveal-in">
       <a class="contact-method-main" [href]="'mailto:' + email">
         <span class="method-label mono-label">{{ contactCopy.emailLabel }}</span>
         <span class="contact-value">{{ email }}</span>
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <a class="contact-method linkedin-method" [href]="linkedinUrl" target="_blank" rel="noopener noreferrer">
+    <a class="contact-method linkedin-method reveal-in" [href]="linkedinUrl" target="_blank" rel="noopener noreferrer">
       <span class="contact-method-main">
         <span class="method-label mono-label">{{ contactCopy.linkedinLabel }}</span>
         <span class="contact-value">{{ contactCopy.linkedinCta }}</span>

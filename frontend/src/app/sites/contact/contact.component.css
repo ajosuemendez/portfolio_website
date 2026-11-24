@@ -14,6 +14,15 @@
 .contact-heading {
   width: 100%;
   margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+  animation-delay: 120ms;
+}
+
+.email-method {
+  animation-delay: 260ms;
+}
+
+.linkedin-method {
+  animation-delay: 380ms;
 }
 
 .contact-method {

@@ -1,7 +1,7 @@
 <div class="about-page page-shell">
-  <h1 class="page-title about-title">{{ aboutCopy.title }}</h1>
+  <h1 class="page-title about-title reveal-in">{{ aboutCopy.title }}</h1>
 
-  <nav id="about-tabs" class="about-tabs" [attr.aria-label]="aboutCopy.tabListLabel">
+  <nav id="about-tabs" class="about-tabs reveal-in" [attr.aria-label]="aboutCopy.tabListLabel">
     <a id="about-tab-intro" href="#about-section-intro" [class.is-active]="activeTab === 'intro'" [attr.aria-current]="activeTab === 'intro' ? 'location' : null" (click)="scrollToSection($event, 'intro')">{{ aboutCopy.tabs.intro }}</a>
     <a id="about-tab-experience" href="#about-section-experience" [class.is-active]="activeTab === 'experience'" [attr.aria-current]="activeTab === 'experience' ? 'location' : null" (click)="scrollToSection($event, 'experience')">{{ aboutCopy.tabs.experience }}</a>
     <a id="about-tab-capabilities" href="#about-section-capabilities" [class.is-active]="activeTab === 'capabilities'" [attr.aria-current]="activeTab === 'capabilities' ? 'location' : null" (click)="scrollToSection($event, 'capabilities')">{{ aboutCopy.tabs.capabilities }}</a>
@@ -9,9 +9,9 @@
     <span class="about-tabs-overflow-cue" aria-hidden="true"></span>
   </nav>
 
-  <div id="about-content" class="about-content" role="region" [attr.aria-label]="aboutCopy.title" tabindex="0" (scroll)="onPanelScroll($event)">
+  <div #aboutContent id="about-content" class="about-content reveal-in" role="region" [attr.aria-label]="aboutCopy.title" tabindex="0" (scroll)="onPanelScroll($event)">
     <section id="about-section-intro" class="about-section-panel intro-section" data-about-section="intro" aria-labelledby="about-intro-heading">
-      <div class="intro-copy">
+      <div class="intro-copy scroll-reveal">
         <p class="section-eyebrow"><span class="section-index">01</span>{{ aboutCopy.introLabel }}</p>
         <h2 id="about-intro-heading">{{ aboutCopy.introHeadline }}</h2>
         <p class="intro-description">{{ aboutCopy.intro }}</p>
@@ -25,12 +25,12 @@
     </section>
 
     <section id="about-section-experience" class="about-section-panel experience-section" data-about-section="experience" aria-labelledby="experience-title">
-      <div class="section-heading">
+      <div class="section-heading scroll-reveal">
         <span class="section-index">02</span>
         <h2 id="experience-title">{{ aboutCopy.experienceTitle }}</h2>
       </div>
       <div class="experience-list">
-        <article class="experience-item" *ngFor="let experience of aboutCopy.experiences; let i = index" [class.is-left]="i % 2 === 0" [class.is-right]="i % 2 !== 0">
+        <article class="experience-item scroll-reveal" *ngFor="let experience of aboutCopy.experiences; let i = index" [class.is-left]="i % 2 === 0" [class.is-right]="i % 2 !== 0">
           <div class="experience-copy">
             <p class="experience-period">{{ experience.period }}</p>
             <h3>{{ experience.role }}</h3>
@@ -43,12 +43,12 @@
     </section>
 
     <section id="about-section-capabilities" class="about-section-panel capabilities-section" data-about-section="capabilities" aria-labelledby="capabilities-title">
-      <div class="section-heading">
+      <div class="section-heading scroll-reveal">
         <span class="section-index">03</span>
         <h2 id="capabilities-title">{{ aboutCopy.capabilityTitle }}</h2>
       </div>
       <dl class="capability-list">
-        <div class="capability-item" *ngFor="let capability of aboutCopy.capabilities; let i = index">
+        <div class="capability-item scroll-reveal" *ngFor="let capability of aboutCopy.capabilities; let i = index">
           <dt><span class="capability-index">0{{ i + 1 }}</span>{{ capability.label }}</dt>
           <dd>{{ capability.value }}</dd>
         </div>
@@ -56,12 +56,12 @@
     </section>
 
     <section id="about-section-education" class="about-section-panel education-section" data-about-section="education" aria-labelledby="education-title">
-      <div class="section-heading">
+      <div class="section-heading scroll-reveal">
         <span class="section-index">04</span>
         <h2 id="education-title">{{ aboutCopy.educationTitle }}</h2>
       </div>
       <div class="education-list">
-        <article class="education-item" *ngFor="let education of aboutCopy.education; let i = index">
+        <article class="education-item scroll-reveal" *ngFor="let education of aboutCopy.education; let i = index">
           <span class="education-index">0{{ i + 1 }}</span>
           <div>
             <h3>{{ education.title }}</h3>
