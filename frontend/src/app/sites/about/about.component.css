@@ -132,7 +132,6 @@
 
 .section-index,
 .capability-index,
-.experience-index,
 .education-index {
   color: var(--color-accent);
   font-family: var(--font-mono);
@@ -375,6 +374,44 @@
 }
 
 @media (max-width: 760px) {
+  .section-eyebrow {
+    display: block;
+  }
+
+  .section-index,
+  .capability-index,
+  .education-index {
+    display: none;
+  }
+
+  .section-heading {
+    display: block;
+  }
+
+  .capability-item dt {
+    display: block;
+  }
+
+  .capability-item dd {
+    margin-left: 0;
+  }
+
+  .education-item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-section-panel {
+    padding-block: clamp(2.5rem, 8vw, 4rem);
+  }
+
+  .about-section-panel + .about-section-panel {
+    margin-top: clamp(2rem, 7vw, 3rem);
+  }
+
+  .section-heading {
+    margin-bottom: 2rem;
+  }
+
   .experience-list {
     grid-template-columns: 1.2rem minmax(0, 1fr);
     row-gap: 1.5rem;
@@ -425,6 +462,10 @@
   .experience-list,
   .education-list {
     row-gap: 1.5rem;
+  }
+
+  .capability-list {
+    row-gap: 1.75rem;
   }
 }
 

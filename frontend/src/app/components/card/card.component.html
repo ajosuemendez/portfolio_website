@@ -30,15 +30,16 @@
       <span *ngFor="let tech of project.tech" class="tech-chip">{{ tech }}</span>
     </div>
     <p class="project-description">{{ project.description }}</p>
-    <a
-      *ngIf="project.link"
-      [href]="project.link"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="visit-link"
-      [attr.aria-label]="project.title + ' — ' + visitSiteText + '. ' + externalLinkLabel"
-    >
-      {{ visitSiteText }} <span aria-hidden="true">↗</span>
-    </a>
+    <div *ngIf="project.link" class="visit-link-container">
+      <a
+        [href]="project.link"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="visit-link action-link"
+        [attr.aria-label]="project.title + ' — ' + visitSiteText + '. ' + externalLinkLabel"
+      >
+        {{ visitSiteText }} <span aria-hidden="true">↗</span>
+      </a>
+    </div>
   </div>
 </article>

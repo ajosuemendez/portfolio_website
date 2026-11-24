@@ -27,6 +27,10 @@
   margin-bottom: 0.85rem;
 }
 
+.cv-heading.reveal-in {
+  animation-delay: 120ms;
+}
+
 .cv-actions {
   display: flex;
   flex: 0 0 auto;
@@ -43,6 +47,10 @@
   justify-content: center;
   gap: 1rem;
   margin-top: 0.5rem;
+}
+
+.cv-pagination.reveal-in {
+  animation-delay: 440ms;
 }
 
 .cv-pagination button {
@@ -99,6 +107,18 @@
   min-height: 44px;
   flex: 0 0 auto;
   white-space: nowrap;
+}
+
+.mobile-download-btn {
+  display: none;
+}
+
+.pdf-frame.reveal-in {
+  animation-delay: 240ms;
+}
+
+.mobile-download-btn.reveal-in {
+  animation-delay: 360ms;
 }
 
 .pdf-frame {
@@ -215,8 +235,17 @@
   }
 
   .cv-actions {
+    display: none;
+  }
+
+  .mobile-download-btn {
+    display: flex;
     width: 100%;
+    min-height: 46px;
     justify-content: space-between;
+    margin-top: 0.65rem;
+    padding-inline: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .download-btn {

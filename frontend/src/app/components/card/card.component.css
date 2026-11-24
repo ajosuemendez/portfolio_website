@@ -151,16 +151,9 @@
   line-height: 1.75;
 }
 
-.visit-link {
-  display: inline-flex;
-  min-height: 46px;
-  align-items: center;
-  gap: 0.6rem;
+.visit-link-container {
+  width: 100%;
   margin-top: auto;
-  color: var(--color-accent);
-  font-size: 0.84rem;
-  font-weight: 700;
-  text-decoration: none;
 }
 
 .visit-link span {
@@ -170,6 +163,25 @@
 .visit-link:hover span,
 .visit-link:focus-visible span {
   transform: translate(3px, -3px);
+}
+
+@media (max-width: 760px) {
+  .project-information {
+    margin-top: clamp(1.35rem, 5vw, 1.75rem);
+  }
+
+  .visit-link-container {
+    margin-top: 0.35rem;
+  }
+
+  .visit-link {
+    display: flex;
+    width: 100%;
+    min-height: 48px;
+    justify-content: space-between;
+    padding-inline: 0.85rem;
+    font-size: 0.78rem;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -244,8 +256,10 @@
     font-size: 0.88rem;
   }
 
+}
+
+@media (max-width: 760px) {
   .image-link-mark {
-    opacity: 1;
-    transform: none;
+    display: none;
   }
 }
