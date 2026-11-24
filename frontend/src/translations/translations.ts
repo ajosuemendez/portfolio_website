@@ -98,17 +98,18 @@ export const translations = {
     },
     projects: [
       {
-        title: 'Mobile Decision Support App',
-        description: 'App that helps groups to make important decision while traveling on the phone/tablet.',
-        tech: ['React', 'Python', 'MySQL'],
-        link: 'https://info.ajosuemendez.com/decision-support/',
-        imagePath: 'assets/images/dsp-frontpage.png',
+        title: 'Danzuno - Dance Practice Platform For Studios',
+        description: 'App that helps dance studios manage their students and practice sessions, providing a mobile-first experience for both instructors and students, with features like session scheduling, progress tracking, and video tutorials.',
+        tech: ['Angular', 'Typescript', '.NET', 'C#', 'PostgreSQL', 'Docker', 'NGINX'],
+        link: 'https://danzuno.com/login',
+        imagePath: 'assets/images/danzuno.png',
       },
       {
-        title: 'Online Training Chatbot',
-        description: 'A simulation platform that uses chatbots to represent individuals with psychological challenges, designed to train users in effective conversational techniques and appropriate communication strategies.',
-        tech: ['React', 'Python', 'Rasa', 'Docker'],
-        imagePath: 'assets/images/chatbot-demo.png',
+        title: 'InfraLoop – Production Readiness Analyzer',
+        description: 'A tool that analyzes software repositories to identify production-readiness gaps, recommend suitable cloud infrastructure, and estimate monthly hosting costs. Provides evidence-based insights while keeping source code and sensitive files private.',
+        tech: ['Angular', 'Typescript', 'Python', 'FastAPI', 'Docker'],
+        link: 'https://infraloop.space/',
+        imagePath: 'assets/images/infraloop.png',
       }
     ]
   },
@@ -211,17 +212,18 @@ export const translations = {
     },
     projects: [
       {
-        title: 'Mobile Entscheidungshilfe',
-        description: 'App, die Gruppen dabei hilft, wichtige Entscheidungen unterwegs auf Telefon/Tablet zu treffen.',
-        tech: ['React', 'Python', 'MySQL'],
-        link: 'https://info.ajosuemendez.com/decision-support/',
-        imagePath: 'assets/images/dsp-frontpage.png',
+        title: 'Danzuno – Tanz- und Übungsplattform für Tanzschulen',
+        description: 'Eine App, die Tanzschulen bei der Verwaltung ihrer Kursteilnehmer und Trainingseinheiten unterstützt. Sie bietet eine mobiloptimierte Nutzererfahrung für Tanzlehrer und Schüler mit Funktionen wie Kursplanung, Fortschrittsverfolgung und Video-Tutorials.',
+        tech: ['Angular', 'Typescript', '.NET', 'C#', 'PostgreSQL', 'Docker', 'NGINX'],
+        link: 'https://danzuno.com/login',
+        imagePath: 'assets/images/danzuno.png',
       },
       {
-        title: 'Online Trainings-Chatbot',
-        description: 'Eine Simulationsplattform, die Chatbots verwendet, um Personen mit psychologischen Herausforderungen darzustellen und Benutzer in effektiven Gesprächstechniken und angemessener Kommunikation zu schulen.',
-        tech: ['React', 'Python', 'Rasa', 'Docker'],
-        imagePath: 'assets/images/chatbot-demo.png',
+        title: 'InfraLoop – Analyzer für Produktionsbereitschaft',
+        description: 'Ein Tool, das Software-Repositories analysiert, um Produktionsreifheitslücken zu identifizieren, geeignete Cloud-Infrastruktur zu empfehlen und monatliche Hosting-Kosten zu schätzen. Es liefert evidenzbasierte Erkenntnisse, während Quellcode und sensible Dateien privat bleiben.',
+        tech: ['Angular', 'Typescript', 'Python', 'FastAPI', 'Docker'],
+        link: 'https://infraloop.space/',
+        imagePath: 'assets/images/infraloop.png',
       }
     ]
   }
