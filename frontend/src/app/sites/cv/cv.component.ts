@@ -12,7 +12,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./cv.component.css'],
 })
 export class CvComponent implements OnInit, OnDestroy {
-  pdfSrc = 'assets/cvs/Lebenslauf_Alejandro_Mendez.pdf';
+  pdfSrc = 'assets/cvs/CV%20Alejandro%20Mendez%20-%20EN.pdf';
+  downloadHref = this.pdfSrc;
   downloadText = 'Download';
   cvCopy: any = translations.en.cv;
   uiText: Record<keyof typeof translations.en.uiText, string> = translations.en.uiText;
@@ -30,6 +31,18 @@ export class CvComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.langSub = this.languageService.language$.subscribe((lang: 'en' | 'de') => {
+      if (this.pageChangeTimer) {
+        clearTimeout(this.pageChangeTimer);
+        this.pageChangeTimer = undefined;
+      }
+      this.pageTurnPhase = 'idle';
+      this.isPageChanging = false;
+      this.currentPage = 1;
+      this.totalPages = 0;
+      this.pdfSrc = lang === 'de'
+        ? 'assets/cvs/Lebenslauf%20Alejandro%20Mendez%20-%20DE.pdf'
+        : 'assets/cvs/CV%20Alejandro%20Mendez%20-%20EN.pdf';
+      this.downloadHref = this.pdfSrc;
       this.downloadText = translations[lang].uiText.download;
       this.uiText = translations[lang].uiText;
       this.cvCopy = translations[lang].cv;

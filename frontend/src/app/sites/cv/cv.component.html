@@ -2,7 +2,7 @@
   <div class="cv-heading reveal-in">
     <h1 class="page-title cv-title">{{ cvCopy.title }}</h1>
     <div class="cv-actions">
-      <a href="assets/cvs/Lebenslauf_Alejandro_Mendez.pdf" download class="action-link download-btn desktop-download-btn">
+      <a [href]="downloadHref" download class="action-link download-btn desktop-download-btn">
         {{ downloadText }} <span aria-hidden="true">↓</span>
       </a>
     </div>
@@ -31,7 +31,7 @@
       </div>
     </div>
   </div>
-  <a href="assets/cvs/Lebenslauf_Alejandro_Mendez.pdf" download class="action-link download-btn mobile-download-btn reveal-in">
+  <a [href]="downloadHref" download class="action-link download-btn mobile-download-btn reveal-in">
     {{ downloadText }} <span aria-hidden="true">↓</span>
   </a>
   <nav class="cv-pagination reveal-in" [attr.aria-label]="uiText.cvPagination">
